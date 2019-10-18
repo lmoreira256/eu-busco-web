@@ -1,0 +1,21 @@
+<mat-card>
+
+    <mat-card-title class="text-center">
+        AUTENTICAÇÃO
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <mat-form-field class="w-100 mt-3 mb35">
+            <input matInput #login placeholder="Usuario">
+        </mat-form-field>
+
+        <mat-form-field class="w-100 mt-3 mb-3">
+            <input matInput #senha (keydown)="onKeydown($event)" type="password" placeholder="Senha">
+        </mat-form-field>
+
+        <button mat-raised-button (click)="entrar()" class="w-100 mt-5 mb-5" color="primary">Entrar</button>
+
+    </mat-card-content>
+
+</mat-card>

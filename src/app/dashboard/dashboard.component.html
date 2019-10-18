@@ -1,0 +1,53 @@
+<mat-card>
+
+    <mat-card-title class="text-center">
+        Seja bem vindo, {{ usuarioService.nomeUsuario }}.
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <span>Sua nota atual:&nbsp; {{ dadosUsuario.nota }}</span>
+        <br>
+        <span>Suas entregas abertas:&nbsp; {{ dadosUsuario.entregasAbertas }}</span>
+        <br>
+        <span>Total de entregas:&nbsp; {{ dadosUsuario.totalEntregas }}</span>
+
+        <div *ngIf="entregaService.entregasAbertas.length > 0" class="text-center">
+
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+
+            <span class="titulo font-weight-bold">Entregas abertas para você:</span>
+
+            <mat-grid-list cols="3" rowHeight="3:1">
+                <mat-grid-tile *ngFor="let entrega of entregaService.entregasAbertas">
+
+                    <mat-card class="card-entrega w-100">
+
+                        <mat-card-title class="text-center">
+                            {{ entrega.titulo }}
+                        </mat-card-title>
+
+                        <mat-card-content class="w-100">
+
+                            <span class="text-truncate text-center descricao">{{ entrega.descricao }}</span>
+
+                            <br>
+                            <mat-divider></mat-divider>
+                            <br>
+
+                            <span class="text-left dados-entrega">Volume:&nbsp; {{ entrega.volume }}</span>
+
+                        </mat-card-content>
+
+                    </mat-card>
+
+                </mat-grid-tile>
+            </mat-grid-list>
+
+        </div>
+
+    </mat-card-content>
+
+</mat-card>

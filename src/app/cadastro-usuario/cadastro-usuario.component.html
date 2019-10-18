@@ -1,0 +1,40 @@
+<mat-card>
+
+    <mat-card-title class="text-center">
+        Cadastro de Usuário
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <mat-form-field>
+            <mat-label>Tipo de usuário</mat-label>
+            <mat-select #campoTipoUsuario>
+                <mat-option *ngFor="let tipoUsuario of tipoUsuarioService.tiposUsuario" [value]="tipoUsuario.id">
+                    {{ tipoUsuario.descricao }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #nome placeholder="Nome">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #login placeholder="Login">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #senha type="password" placeholder="Senha">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #confirmarSenha type="password" placeholder="Confirmar Senha">
+        </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
+    </mat-card-actions>
+
+</mat-card>

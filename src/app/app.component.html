@@ -1,0 +1,69 @@
+<div *ngIf="util.alertDanger || util.alertSuccess" class="area-alerta text-center">
+  <div *ngIf="util.alertDanger" class="alert alert-danger text-center" role="alert">{{ util.mensageAlertDanger }}</div>
+  <div *ngIf="util.alertSuccess" class="alert alert-success text-center" role="alert">{{ util.mensageAlertSuccess }}
+  </div>
+</div>
+
+<nav class="navbar navbar-dark bg-dark">
+
+  <button *ngIf="usuarioService.usuarioLogado" (click)="menu.toggle()" class="btn btn-secondary">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="navbar-brand">EuBusco</span>
+
+</nav>
+
+<mat-drawer-container autosize>
+  <mat-drawer #menu mode="side">
+    <div class="menu">
+
+      <span>
+        <button (click)="abrirPrograma(pages.DASHBOARD)"
+          class="btn btn-secondary rounded-0 text-left">Dashboard</button>
+        <mat-divider></mat-divider>
+      </span>
+
+      <span *ngIf="usuarioService.tipoUsuario !== 3">
+        <button (click)="abrirPrograma(pages.CADASTRO_ENTREGA)" class="btn btn-secondary rounded-0 text-left">Cadastro
+          de Entrega</button>
+        <mat-divider></mat-divider>
+      </span>
+
+      <button *ngIf="usuarioService.tipoUsuario !== 3" (click)="abrirPrograma(pages.CADASTRO_ENDERECO)"
+        class="btn btn-secondary rounded-0 text-left">Cadastro de
+        Endereço</button>
+
+      <mat-divider></mat-divider>
+
+      <button *ngIf="usuarioService.tipoUsuario === 1" (click)="abrirPrograma(pages.CADASTRO_USUARIO)"
+        class="btn btn-secondary rounded-0 text-left">Cadastro de
+        Usuário</button>
+
+      <mat-divider></mat-divider>
+
+      <button *ngIf="usuarioService.tipoUsuario === 1" (click)="abrirPrograma(pages.CADASTRO_CIDADE)"
+        class="btn btn-secondary rounded-0 text-left">Cadastro de
+        Cidade</button>
+
+      <mat-divider></mat-divider>
+
+      <button *ngIf="usuarioService.tipoUsuario !== 2" (click)="abrirPrograma(pages.ENTREGAS)"
+        class="btn btn-secondary rounded-0 text-left">Entregas Disponíveis</button>
+
+      <mat-divider></mat-divider>
+
+      <button (click)="sair()" class="btn botao-sair fixed-bottom rounded-0">Sair</button>
+
+    </div>
+  </mat-drawer>
+
+  <div class="progress">
+    <div [style.display]="util.requestProgress ? '' : 'none'"
+      class="progress-bar progress-bar-striped progress-bar-animated w-100 rounded-0" role="progressbar"
+      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>

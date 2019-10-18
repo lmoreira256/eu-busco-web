@@ -1,0 +1,24 @@
+mat-card {
+  margin: 25px;
+}
+
+mat-card-content {
+  font-size: 17px;
+}
+
+.titulo {
+  font-size: 20px;
+}
+
+.card-entrega {
+  background: #e6e6e6;
+
+  .descricao {
+    max-width: 400px;
+    display: inline-block;
+  }
+
+  .dados-entrega {
+    display: block;
+  }
+}
