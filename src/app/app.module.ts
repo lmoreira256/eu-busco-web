@@ -23,7 +23,7 @@ import { CadastroCidadeComponent } from './cadastro-cidade/cadastro-cidade.compo
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EntregasComponent } from './entregas/entregas.component';
-
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { EntregasComponent } from './entregas/entregas.component';
     MatGridListModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

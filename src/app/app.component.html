@@ -30,28 +30,29 @@
         <mat-divider></mat-divider>
       </span>
 
-      <button *ngIf="usuarioService.tipoUsuario !== 3" (click)="abrirPrograma(pages.CADASTRO_ENDERECO)"
-        class="btn btn-secondary rounded-0 text-left">Cadastro de
-        Endereço</button>
+      <span *ngIf="usuarioService.tipoUsuario !== 3">
+        <button (click)="abrirPrograma(pages.CADASTRO_ENDERECO)" class="btn btn-secondary rounded-0 text-left">Cadastro
+          de Endereço</button>
+        <mat-divider></mat-divider>
+      </span>
 
-      <mat-divider></mat-divider>
+      <span *ngIf="usuarioService.tipoUsuario === 1">
+        <button (click)="abrirPrograma(pages.CADASTRO_USUARIO)" class="btn btn-secondary rounded-0 text-left">Cadastro
+          de Usuário</button>
+        <mat-divider></mat-divider>
+      </span>
 
-      <button *ngIf="usuarioService.tipoUsuario === 1" (click)="abrirPrograma(pages.CADASTRO_USUARIO)"
-        class="btn btn-secondary rounded-0 text-left">Cadastro de
-        Usuário</button>
+      <span *ngIf="usuarioService.tipoUsuario === 1">
+        <button (click)="abrirPrograma(pages.CADASTRO_CIDADE)" class="btn btn-secondary rounded-0 text-left">Cadastro de
+          Cidade</button>
+        <mat-divider></mat-divider>
+      </span>
 
-      <mat-divider></mat-divider>
-
-      <button *ngIf="usuarioService.tipoUsuario === 1" (click)="abrirPrograma(pages.CADASTRO_CIDADE)"
-        class="btn btn-secondary rounded-0 text-left">Cadastro de
-        Cidade</button>
-
-      <mat-divider></mat-divider>
-
-      <button *ngIf="usuarioService.tipoUsuario !== 2" (click)="abrirPrograma(pages.ENTREGAS)"
-        class="btn btn-secondary rounded-0 text-left">Entregas Disponíveis</button>
-
-      <mat-divider></mat-divider>
+      <span *ngIf="usuarioService.tipoUsuario !== 2">
+        <button (click)="abrirPrograma(pages.ENTREGAS)" class="btn btn-secondary rounded-0 text-left">Entregas
+          Disponíveis</button>
+        <mat-divider></mat-divider>
+      </span>
 
       <button (click)="sair()" class="btn botao-sair fixed-bottom rounded-0">Sair</button>
 

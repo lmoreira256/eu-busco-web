@@ -38,4 +38,12 @@ export class EntregaService {
     }).finally(() => this.util.requestProgress = false);
   }
 
+  public buscarDisponiveis() {
+    this.http.get('entregaService/buscarDisponiveis').toPromise().then((retorno: any) => {
+      this.entregasAbertas = retorno;
+    }).catch(() => {
+      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
+    }).finally(() => this.util.requestProgress = false);
+  }
+
 }

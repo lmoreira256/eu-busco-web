@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EntregaService } from '../services/entrega.service';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-entregas',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntregasComponent implements OnInit {
 
-  constructor() { }
+  public quantidadeCards: number;
+
+  constructor(
+    public entregaService: EntregaService,
+    public util: UtilService
+  ) {
+    this.quantidadeCards = util.calcularTamanhoGrid();
+  }
 
   ngOnInit() {
+    this.entregaService.buscarDisponiveis();
   }
 
 }

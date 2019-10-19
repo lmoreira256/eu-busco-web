@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class UtilService {
   public alertSuccess = false;
   public mensageAlertSuccess: string;
 
-  constructor() { }
+  constructor(
+    public datepipe: DatePipe
+  ) { }
 
   public showAlertDanger(mensage: string) {
     const me = this;
@@ -49,6 +52,22 @@ export class UtilService {
 
   public isNullOrEmpy(obj: any) {
     return obj === null || obj === undefined;
+  }
+
+  public formatarData(data: string) {
+    return this.datepipe.transform(data, 'dd/MM/yyyy');
+  }
+
+  public calcularTamanhoGrid() {
+    const tamanhoTela = window.innerWidth;
+
+    if (tamanhoTela < 1800 && tamanhoTela >= 1300) {
+      return 2;
+    } else if (tamanhoTela < 1300) {
+      return 1;
+    }
+
+    return 3;
   }
 
 }
