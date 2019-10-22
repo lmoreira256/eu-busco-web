@@ -11,6 +11,7 @@ export class UtilService {
   public mensageAlertDanger: string;
   public alertSuccess = false;
   public mensageAlertSuccess: string;
+  public tamanhoTela = window.innerWidth;
 
   constructor(
     public datepipe: DatePipe
@@ -59,15 +60,21 @@ export class UtilService {
   }
 
   public calcularTamanhoGrid() {
-    const tamanhoTela = window.innerWidth;
-
-    if (tamanhoTela < 1800 && tamanhoTela >= 1300) {
+    if (this.tamanhoTela <= 1800 && this.tamanhoTela >= 1300) {
       return 2;
-    } else if (tamanhoTela < 1300) {
+    } else if (this.tamanhoTela < 1300) {
       return 1;
     }
 
     return 3;
+  }
+
+  public calcularRowHeightGrid() {
+    if (this.tamanhoTela <= 500) {
+      return '1:1';
+    }
+
+    return '2:1';
   }
 
 }

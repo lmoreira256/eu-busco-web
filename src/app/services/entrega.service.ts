@@ -46,4 +46,8 @@ export class EntregaService {
     }).finally(() => this.util.requestProgress = false);
   }
 
+  public pegarEntrega(parametros: any) {
+    return this.http.post('entregaService/pegarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
 }

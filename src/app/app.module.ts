@@ -24,6 +24,8 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EntregasComponent } from './entregas/entregas.component';
 import { DatePipe } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalEntregaComponent } from './entregas/modal-entrega/modal-entrega.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,10 @@ import { DatePipe } from '@angular/common';
     CadastroEnderecoComponent,
     CadastroCidadeComponent,
     CadastroUsuarioComponent,
-    EntregasComponent
+    EntregasComponent,
+    ModalEntregaComponent
   ],
+  entryComponents: [ModalEntregaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,7 +55,8 @@ import { DatePipe } from '@angular/common';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },

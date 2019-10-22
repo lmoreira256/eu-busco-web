@@ -20,24 +20,29 @@
 
             <span class="titulo font-weight-bold">Entregas abertas para você:</span>
 
-            <mat-grid-list cols="3" rowHeight="3:1">
+            <mat-grid-list [cols]="quantidadeCards" [rowHeight]="rowHeight">
                 <mat-grid-tile *ngFor="let entrega of entregaService.entregasAbertas">
 
                     <mat-card class="card-entrega w-100">
 
                         <mat-card-title class="text-center">
-                            {{ entrega.titulo }}
+                            {{ entrega.tituloEntrega }}
                         </mat-card-title>
 
                         <mat-card-content class="w-100">
 
-                            <span class="text-truncate text-center descricao">{{ entrega.descricao }}</span>
+                            <span class="text-truncate text-center descricao">{{ entrega.descricaoEntrega }}</span>
 
                             <br>
                             <mat-divider></mat-divider>
                             <br>
 
-                            <span class="text-left dados-entrega">Volume:&nbsp; {{ entrega.volume }}</span>
+                            <span class="text-left dados-entrega">Cliente:&nbsp; {{ entrega.nomeCliente }}</span>
+                            <span class="text-left dados-entrega">Volume:&nbsp; {{ entrega.volumeEntrega }}</span>
+                            <span class="text-left dados-entrega">Data de coleta:&nbsp;
+                                {{ util.formatarData(entrega.dataColetaEntrega) }}</span>
+                            <span class="text-left dados-entrega">Data prazo de entrega:&nbsp;
+                                {{ util.formatarData(entrega.dataPrazoEntrega) }}</span>
 
                         </mat-card-content>
 

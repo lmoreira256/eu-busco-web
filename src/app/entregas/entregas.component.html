@@ -13,10 +13,10 @@
 
             <span class="titulo font-weight-bold">Entregas disponíveis para você:</span>
 
-            <mat-grid-list [cols]="quantidadeCards" rowHeight="2:1">
+            <mat-grid-list [cols]="quantidadeCards" [rowHeight]="rowHeight">
                 <mat-grid-tile *ngFor="let entrega of entregaService.entregasAbertas">
 
-                    <mat-card class="card-entrega w-100">
+                    <mat-card (click)="abrirEntrega(entrega)" class="card-entrega w-100">
 
                         <mat-card-title class="text-center">
                             {{ entrega.tituloEntrega }}

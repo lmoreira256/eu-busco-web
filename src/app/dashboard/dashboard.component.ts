@@ -11,6 +11,8 @@ import { EntregaService } from '../services/entrega.service';
 })
 export class DashboardComponent implements OnInit {
 
+  public quantidadeCards: number;
+  public rowHeight: string;
   public dadosUsuario = {
     nota: '-',
     entregasAbertas: '-',
@@ -22,7 +24,10 @@ export class DashboardComponent implements OnInit {
     public entregaService: EntregaService,
     private util: UtilService,
     private mensagem: MensagensService
-  ) { }
+  ) {
+    this.quantidadeCards = util.calcularTamanhoGrid();
+    this.rowHeight = util.calcularRowHeightGrid();
+  }
 
   ngOnInit() {
     this.adquirirDadosUsuario();
