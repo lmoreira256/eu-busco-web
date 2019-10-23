@@ -50,4 +50,20 @@ export class EntregaService {
     return this.http.post('entregaService/pegarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
+  public largarEntrega(parametros: any) {
+    return this.http.post('entregaService/largarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  public excluirEntrega(parametros: any) {
+    return this.http.post('entregaService/excluirEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  public buscarTodasAbertas() {
+    this.http.get('entregaService/buscarTodasAbertas').toPromise().then((retorno: any) => {
+      this.entregasAbertas = retorno;
+    }).catch(() => {
+      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
+    }).finally(() => this.util.requestProgress = false);
+  }
+
 }

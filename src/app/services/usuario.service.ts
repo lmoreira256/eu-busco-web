@@ -10,6 +10,11 @@ export class UsuarioService {
   public idUsuario: number;
   public tipoUsuario: number;
   public nomeUsuario: string;
+  public dadosUsuario = {
+    nota: '-',
+    entregasAbertas: '-',
+    totalEntregas: '-'
+  };
 
   constructor(
     private http: HttpClient

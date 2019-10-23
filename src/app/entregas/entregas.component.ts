@@ -3,6 +3,7 @@ import { EntregaService } from '../services/entrega.service';
 import { UtilService } from '../services/util.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEntregaComponent } from './modal-entrega/modal-entrega.component';
+import { PagesService } from '../services/pages.service';
 
 @Component({
   selector: 'app-entregas',
@@ -17,7 +18,8 @@ export class EntregasComponent implements OnInit {
   constructor(
     public entregaService: EntregaService,
     public util: UtilService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private pages: PagesService
   ) {
     this.quantidadeCards = util.calcularTamanhoGrid();
     this.rowHeight = util.calcularRowHeightGrid();
@@ -30,7 +32,10 @@ export class EntregasComponent implements OnInit {
   public abrirEntrega(entrega: any): void {
     this.dialog.open(ModalEntregaComponent, {
       width: (this.util.tamanhoTela - 40).toString() + 'px',
-      data: entrega
+      data: {
+        entregaSelecionada: entrega,
+        paginaAberta: this.pages.ENTREGAS
+      }
     });
   }
 

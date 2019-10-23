@@ -6,11 +6,11 @@
 
     <mat-card-content>
 
-        <span>Sua nota atual:&nbsp; {{ dadosUsuario.nota }}</span>
+        <span>Sua nota atual:&nbsp; {{ usuarioService.dadosUsuario.nota }}</span>
         <br>
-        <span>Suas entregas abertas:&nbsp; {{ dadosUsuario.entregasAbertas }}</span>
+        <span>Suas entregas abertas:&nbsp; {{ usuarioService.dadosUsuario.entregasAbertas }}</span>
         <br>
-        <span>Total de entregas:&nbsp; {{ dadosUsuario.totalEntregas }}</span>
+        <span>Total de entregas:&nbsp; {{ usuarioService.dadosUsuario.totalEntregas }}</span>
 
         <div *ngIf="entregaService.entregasAbertas.length > 0" class="text-center">
 
@@ -23,7 +23,7 @@
             <mat-grid-list [cols]="quantidadeCards" [rowHeight]="rowHeight">
                 <mat-grid-tile *ngFor="let entrega of entregaService.entregasAbertas">
 
-                    <mat-card class="card-entrega w-100">
+                    <mat-card (click)="abrirEntrega(entrega)" class="card-entrega w-100">
 
                         <mat-card-title class="text-center">
                             {{ entrega.tituloEntrega }}
