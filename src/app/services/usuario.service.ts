@@ -32,4 +32,8 @@ export class UsuarioService {
     return this.http.post('usuarioService/novoUsuario', parametros).toPromise();
   }
 
+  public buscarTodosUsuarios() {
+    return this.http.get('usuarioService/buscarTodosUsuarios').toPromise();
+  }
+
 }

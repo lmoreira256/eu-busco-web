@@ -1,0 +1,44 @@
+<mat-card>
+
+    <mat-card-title class="text-center">
+        Cadastro de contato
+    </mat-card-title>
+
+    <mat-card-content>
+
+        <mat-form-field>
+            <input matInput #titulo placeholder="Titulo">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Cidade</mat-label>
+            <mat-select #campoCidade>
+                <mat-option *ngFor="let cidade of cidadeService.cidades" [value]="cidade.id">
+                    {{ cidade.descricao }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #descricaoEndereco placeholder="Endereço">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #complemento placeholder="Complemento">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #bairro placeholder="Bairro">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #numero type="number" placeholder="Número">
+        </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button class="btn btn-success" (click)="salvar()">Salvar</button>
+    </mat-card-actions>
+
+</mat-card>

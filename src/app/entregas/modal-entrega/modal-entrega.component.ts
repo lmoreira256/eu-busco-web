@@ -31,7 +31,7 @@ export class ModalEntregaComponent {
 
   public fecharModal() {
     const me = this;
-    debugger
+
     if (me.paginaAberta === me.pages.ENTREGAS) {
       me.entregaService.buscarDisponiveis();
     } else {
@@ -68,7 +68,6 @@ export class ModalEntregaComponent {
     const me = this;
 
     me.entregaService.largarEntrega(me.entrega.idEntrega).then((retorno: any) => {
-      debugger
       if (retorno) {
         me.fecharModal();
       } else {
