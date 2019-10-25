@@ -11,5 +11,6 @@ export class PagesService {
   public CADASTRO_USUARIO = '/cadastro-usuario';
   public CADASTRO_CIDADE = '/cadastro-cidade';
   public ENTREGAS = '/entregas';
+  public CADASTRO_CONTATO = '/cadastro-contato';
 
 }

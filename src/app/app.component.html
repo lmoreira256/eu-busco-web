@@ -15,6 +15,7 @@
 </nav>
 
 <mat-drawer-container autosize>
+
   <mat-drawer #menu mode="side">
     <div class="menu">
 
@@ -51,6 +52,12 @@
       <span *ngIf="usuarioService.tipoUsuario !== 2">
         <button (click)="abrirPrograma(pages.ENTREGAS)" class="btn btn-secondary rounded-0 text-left">Entregas
           Disponíveis</button>
+        <mat-divider></mat-divider>
+      </span>
+
+      <span *ngIf="usuarioService.tipoUsuario === 1">
+        <button (click)="abrirPrograma(pages.CADASTRO_CONTATO)" class="btn btn-secondary rounded-0 text-left">Cadastro
+          de Contatos</button>
         <mat-divider></mat-divider>
       </span>
 

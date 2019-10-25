@@ -7,6 +7,7 @@ import { CadastroEnderecoComponent } from './cadastro-endereco/cadastro-endereco
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { CadastroCidadeComponent } from './cadastro-cidade/cadastro-cidade.component';
 import { EntregasComponent } from './entregas/entregas.component';
+import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
 
 const routes: Routes = [
   { path: '', component: AutenticacaoComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'cadastro-endereco', component: CadastroEnderecoComponent },
   { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
   { path: 'cadastro-cidade', component: CadastroCidadeComponent },
-  { path: 'entregas', component: EntregasComponent }
+  { path: 'entregas', component: EntregasComponent },
+  { path: 'cadastro-contato', component: CadastroContatoComponent }
 ];
 
 @NgModule({
