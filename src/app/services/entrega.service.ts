@@ -66,4 +66,8 @@ export class EntregaService {
     }).finally(() => this.util.requestProgress = false);
   }
 
+  public finalizarEntrega(parametros: any) {
+    return this.http.post('entregaService/finalizarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
 }

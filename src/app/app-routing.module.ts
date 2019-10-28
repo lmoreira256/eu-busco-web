@@ -8,6 +8,7 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
 import { CadastroCidadeComponent } from './cadastro-cidade/cadastro-cidade.component';
 import { EntregasComponent } from './entregas/entregas.component';
 import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
+import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
 
 const routes: Routes = [
   { path: '', component: AutenticacaoComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
   { path: 'cadastro-cidade', component: CadastroCidadeComponent },
   { path: 'entregas', component: EntregasComponent },
-  { path: 'cadastro-contato', component: CadastroContatoComponent }
+  { path: 'cadastro-contato', component: CadastroContatoComponent },
+  { path: 'cadastro-avaliacao', component: CadastroAvaliacaoComponent }
 ];
 
 @NgModule({

@@ -27,6 +27,7 @@ import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalEntregaComponent } from './entregas/modal-entrega/modal-entrega.component';
 import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
+import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.co
     CadastroUsuarioComponent,
     EntregasComponent,
     ModalEntregaComponent,
-    CadastroContatoComponent
+    CadastroContatoComponent,
+    CadastroAvaliacaoComponent
   ],
   entryComponents: [ModalEntregaComponent],
   imports: [

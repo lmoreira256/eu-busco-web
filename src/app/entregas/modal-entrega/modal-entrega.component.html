@@ -38,4 +38,7 @@
     <button *ngIf="paginaAberta == '/dashboard' && usuarioService.tipoUsuario != 3" type="button"
         (click)="excluirEntrega()" class="btn btn-danger float-right">Excluir entregas</button>
 
+    <button *ngIf="paginaAberta == '/dashboard' && usuarioService.tipoUsuario != 2" type="button"
+        (click)="finalizarEntrega()" class="btn btn-primary float-right">Finalizar entrega</button>
+
 </div>

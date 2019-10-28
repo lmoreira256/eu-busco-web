@@ -85,10 +85,25 @@ export class ModalEntregaComponent {
       if (retorno) {
         me.fecharModal();
       } else {
-        me.util.showAlertDanger(me.mensagem.FALHA_LARGAR_ENTREGA);
+        me.util.showAlertDanger(me.mensagem.FALHA_EXCLUIR_ENTREGA);
       }
     }).catch(() => {
-      me.util.showAlertDanger(me.mensagem.FALHA_LARGAR_ENTREGA);
+      me.util.showAlertDanger(me.mensagem.FALHA_EXCLUIR_ENTREGA);
+    });
+  }
+
+  public finalizarEntrega() {
+    const me = this;
+
+    me.entregaService.finalizarEntrega(me.entrega.idEntrega).then((retorno: any) => {
+      if (retorno) {
+        me.fecharModal();
+        me.usuarioService.buscarDadosUsuario();
+      } else {
+        me.util.showAlertDanger(me.mensagem.FALHA_FINALIZAR_ENTREGA);
+      }
+    }).catch(() => {
+      me.util.showAlertDanger(me.mensagem.FALHA_FINALIZAR_ENTREGA);
     });
   }
 
