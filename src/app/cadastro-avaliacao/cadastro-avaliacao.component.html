@@ -1,7 +1,7 @@
 <mat-card>
 
     <mat-card-title class="text-center">
-        Cadastro de contato
+        Cadastro de Avaliação
     </mat-card-title>
 
     <mat-card-content>
@@ -16,7 +16,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Tipo Contato</mat-label>
+            <mat-label>Tipo Contato</mat-label>s
             <mat-select #campoTipoContato>
                 <mat-option *ngFor="let tipoContato of tipoContatoService.tiposContato" [value]="tipoContato.id">
                     {{ tipoContato.descricao }}
