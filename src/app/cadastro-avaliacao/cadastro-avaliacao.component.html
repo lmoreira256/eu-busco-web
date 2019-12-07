@@ -1,31 +1,38 @@
 <mat-card>
 
     <mat-card-title class="text-center">
-        Cadastro de Avaliação
+        {{ tituloPage }}
     </mat-card-title>
 
     <mat-card-content>
 
         <mat-form-field>
-            <mat-label>Usuario</mat-label>
-            <mat-select #campoUsuario>
-                <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
-                    {{ usuario.id }} - {{ usuario.nome }}
+            <mat-label>Entrega</mat-label>
+            <mat-select #entrega (selectionChange)="selecionarAvaliado()">
+                <mat-option *ngFor="let entrega of entregaService.entregasAbertas" [value]="entrega.codigoEntrega">
+                    {{ entrega.tituloEntrega }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Tipo Contato</mat-label>s
-            <mat-select #campoTipoContato>
-                <mat-option *ngFor="let tipoContato of tipoContatoService.tiposContato" [value]="tipoContato.id">
-                    {{ tipoContato.descricao }}
-                </mat-option>
+            <input matInput #avaliado placeholder="Avaliado" disabled="true">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nota</mat-label>
+            <mat-select #nota value="5">
+                <mat-option value="5">5</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="0">0</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput #descricao placeholder="Contato">
+            <textarea matInput #comentario placeholder="Deixe seu comentário sobre a entrega."></textarea>
         </mat-form-field>
 
     </mat-card-content>

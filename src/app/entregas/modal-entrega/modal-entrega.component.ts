@@ -5,6 +5,7 @@ import { EntregaService } from 'src/app/services/entrega.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MensagensService } from 'src/app/services/mensagens.service';
 import { PagesService } from 'src/app/services/pages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-entrega',
@@ -23,6 +24,7 @@ export class ModalEntregaComponent {
     private mensagem: MensagensService,
     private pages: PagesService,
     public dialogRef: MatDialogRef<ModalEntregaComponent>,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.entrega = data.entregaSelecionada;
@@ -56,6 +58,7 @@ export class ModalEntregaComponent {
     me.entregaService.pegarEntrega(parametros).then((retorno: any) => {
       if (retorno) {
         me.fecharModal();
+        me.router.navigate([me.pages.DASHBOARD]);
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_PEGAR_ENTREGA);
       }

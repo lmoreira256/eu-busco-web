@@ -5,6 +5,8 @@ import { FormControl } from '@angular/forms';
 import { EntregaService } from '../services/entrega.service';
 import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
+import { Router } from '@angular/router';
+import { PagesService } from '../services/pages.service';
 
 @Component({
   selector: 'app-cadastro-entrega',
@@ -37,7 +39,9 @@ export class CadastroEntregaComponent implements OnInit {
     private usuarioService: UsuarioService,
     private entregaService: EntregaService,
     private mensagem: MensagensService,
-    private util: UtilService
+    private util: UtilService,
+    private router: Router,
+    private pages: PagesService
   ) { }
 
   ngOnInit() {
@@ -62,6 +66,7 @@ export class CadastroEntregaComponent implements OnInit {
       if (retorno) {
         me.util.showAlertSuccess(me.mensagem.SALVO_SUCESSO);
         me.limparCampos();
+        me.router.navigate([me.pages.DASHBOARD]);
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_SALVAR_ENDERECO);
       }

@@ -70,4 +70,13 @@ export class EntregaService {
     return this.http.post('entregaService/finalizarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
+  public buscarEntregasAvaliacao() {
+    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.idUsuario)
+      .toPromise().then((retorno: any) => {
+        this.entregasAbertas = retorno;
+      }).catch(() => {
+        this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
+      }).finally(() => this.util.requestProgress = false);
+  }
+
 }

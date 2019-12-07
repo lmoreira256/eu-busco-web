@@ -32,7 +32,7 @@
     <button *ngIf="paginaAberta == '/entregas' && usuarioService.tipoUsuario != 2" type="button"
         (click)="pegarEntrega()" class="btn btn-success float-right">Pegar Entrega</button>
 
-    <button *ngIf="paginaAberta == '/dashboard' && usuarioService.tipoUsuario != 2" type="button"
+    <button *ngIf="paginaAberta == '/dashboard' && usuarioService.tipoUsuario === 1" type="button"
         (click)="largarEntrega()" class="btn btn-warning float-right">Largar Entrega</button>
 
     <button *ngIf="paginaAberta == '/dashboard' && usuarioService.tipoUsuario != 3" type="button"
