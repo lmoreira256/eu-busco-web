@@ -28,6 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalEntregaComponent } from './entregas/modal-entrega/modal-entrega.component';
 import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
 import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avalia
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },

@@ -4,6 +4,7 @@ import { UsuarioService } from '../services/usuario.service';
 import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
 import { Md5 } from 'md5-typescript';
+import { Usuario } from '../interfaces/usuario';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -11,6 +12,11 @@ import { Md5 } from 'md5-typescript';
   styleUrls: ['./cadastro-usuario.component.scss']
 })
 export class CadastroUsuarioComponent implements OnInit {
+
+  public usuario: Usuario = {
+    codigo: null,
+    tipoUsuario: null
+  };
 
   @ViewChild('campoTipoUsuario', { static: false })
   public campoTipoUsuario: any;

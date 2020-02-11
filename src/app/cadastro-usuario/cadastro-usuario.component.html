@@ -6,35 +6,46 @@
 
     <mat-card-content>
 
-        <mat-form-field>
-            <mat-label>Tipo de usuário</mat-label>
-            <mat-select #campoTipoUsuario>
-                <mat-option *ngFor="let tipoUsuario of tipoUsuarioService.tiposUsuario" [value]="tipoUsuario.id">
-                    {{ tipoUsuario.descricao }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start stretch" #formUsuario="ngForm">
 
-        <mat-form-field>
-            <input matInput #nome placeholder="Nome">
-        </mat-form-field>
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between  start">
 
-        <mat-form-field>
-            <input matInput #login placeholder="Login">
-        </mat-form-field>
+                <mat-form-field fxFlex="20">
+                    <input matInput type="number" value="" placeholder="Código" [(ngModel)]="usuario.codigo"
+                        name="codigo">
+                </mat-form-field>
 
-        <mat-form-field>
-            <input matInput #senha type="password" placeholder="Senha">
-        </mat-form-field>
+                <mat-form-field fxFlex="20">
+                    <mat-select placeholder="Tipo de usuário" [(ngModel)]="usuario.tipoUsuario" name="tipoUsuario">
+                        <mat-option *ngFor="let tipoUsuario of tipoUsuarioService.tiposUsuario"
+                            [value]="tipoUsuario.id">
+                            {{ tipoUsuario.descricao }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-        <mat-form-field>
-            <input matInput #confirmarSenha type="password" placeholder="Confirmar Senha">
-        </mat-form-field>
+            </div>
+
+            <mat-form-field>
+                <input matInput #nome placeholder="Nome">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput #login placeholder="Login">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput #senha type="password" placeholder="Senha">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput #confirmarSenha type="password" placeholder="Confirmar Senha">
+            </mat-form-field>
+
+            <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
+
+        </form>
 
     </mat-card-content>
-
-    <mat-card-actions>
-        <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
-    </mat-card-actions>
 
 </mat-card>
