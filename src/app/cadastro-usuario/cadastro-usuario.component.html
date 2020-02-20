@@ -8,11 +8,10 @@
 
         <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start stretch" #formUsuario="ngForm">
 
-            <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between  start">
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
 
                 <mat-form-field fxFlex="20">
-                    <input matInput type="number" value="" placeholder="Código" [(ngModel)]="usuario.codigo"
-                        name="codigo">
+                    <input matInput placeholder="Código" appOnlyNumbers [(ngModel)]="usuario.codigo" name="codigo">
                 </mat-form-field>
 
                 <mat-form-field fxFlex="20">
@@ -42,7 +41,7 @@
                 <input matInput #confirmarSenha type="password" placeholder="Confirmar Senha">
             </mat-form-field>
 
-            <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
 
         </form>
 

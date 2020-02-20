@@ -44,9 +44,9 @@ export class CadastroUsuarioComponent implements OnInit {
     this.tipoUsuarioService.adquirirTodos();
   }
 
-  public salvar() {
+  public onSubmit() {
     const me = this;
-
+    debugger
     const senha = me.senha.nativeElement.value;
     const confirmarSenha = me.confirmarSenha.nativeElement.value;
 
@@ -72,6 +72,15 @@ export class CadastroUsuarioComponent implements OnInit {
     }).catch(() => {
       me.util.showAlertDanger(me.mensagem.FALHA_SALVAR_USUARIO);
     }).finally(() => me.util.requestProgress = false);
+  }
+
+  public inputCodeChange(value: any) {
+    console.log(value);
+    console.log(this.usuario);
+  }
+
+  public teste(event) {
+    return /[0-9]+/.test(event.key);
   }
 
   private limparCampos() {
