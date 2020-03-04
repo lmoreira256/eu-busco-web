@@ -4,18 +4,19 @@
         Cadastro de Usuário
     </mat-card-title>
 
-    <mat-card-content>
+    <mat-card-content fxLayout="column" fxLayoutAlign="stretch">
 
-        <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start stretch" #formUsuario="ngForm">
+        <form [formGroup]="userForm" fxLayout="column" fxLayoutAlign="start stretch" (ngSubmit)="onSubmit()"
+            fxLayout="column" fxLayoutAlign="start stretch">
 
             <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between start">
 
                 <mat-form-field fxFlex="20">
-                    <input matInput placeholder="Código" appOnlyNumbers [(ngModel)]="usuario.codigo" name="codigo">
+                    <input type="number" matInput placeholder="Código" name="codigo" formControlName="code">
                 </mat-form-field>
 
                 <mat-form-field fxFlex="20">
-                    <mat-select placeholder="Tipo de usuário" [(ngModel)]="usuario.tipoUsuario" name="tipoUsuario">
+                    <mat-select placeholder="Tipo de usuário" name="tipoUsuario">
                         <mat-option *ngFor="let tipoUsuario of tipoUsuarioService.tiposUsuario"
                             [value]="tipoUsuario.id">
                             {{ tipoUsuario.descricao }}

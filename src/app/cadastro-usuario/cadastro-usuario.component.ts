@@ -5,6 +5,7 @@ import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
 import { Md5 } from 'md5-typescript';
 import { Usuario } from '../interfaces/usuario';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -12,6 +13,10 @@ import { Usuario } from '../interfaces/usuario';
   styleUrls: ['./cadastro-usuario.component.scss']
 })
 export class CadastroUsuarioComponent implements OnInit {
+
+  userForm = this.fb.group({
+    code: ['', [Validators.required, Validators.minLength(4)]]
+  });
 
   public usuario: Usuario = {
     codigo: null,
@@ -37,11 +42,20 @@ export class CadastroUsuarioComponent implements OnInit {
     public tipoUsuarioService: TipoUsuarioService,
     private usuarioService: UsuarioService,
     private mensagem: MensagensService,
-    private util: UtilService
+    private util: UtilService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
     this.tipoUsuarioService.adquirirTodos();
+    this.adicionarOuvinteBotao();
+  }
+
+  adicionarOuvinteBotao() {
+    this.userForm.get('code').valueChanges.subscribe((newValue: string) => {
+      debugger
+      console.log(newValue);
+    });
   }
 
   public onSubmit() {

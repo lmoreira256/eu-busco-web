@@ -28,8 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalEntregaComponent } from './entregas/modal-entrega/modal-entrega.component';
 import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
 import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
-import { FormsModule, FormBuilder } from '@angular/forms';
-import { OnlyNumbersDirective } from './directives/only-numbers.directive';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,8 +42,7 @@ import { OnlyNumbersDirective } from './directives/only-numbers.directive';
     EntregasComponent,
     ModalEntregaComponent,
     CadastroContatoComponent,
-    CadastroAvaliacaoComponent,
-    OnlyNumbersDirective
+    CadastroAvaliacaoComponent
   ],
   entryComponents: [ModalEntregaComponent],
   imports: [
@@ -64,7 +62,8 @@ import { OnlyNumbersDirective } from './directives/only-numbers.directive';
     MatNativeDateModule,
     MatGridListModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },
