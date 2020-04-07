@@ -4,17 +4,14 @@
   </div>
 </div>
 
-<nav class="navbar navbar-dark bg-dark">
-
+<nav class="navbar navbar-dark bg-dark" *ngIf="usuarioService.usuarioLogado">
   <button *ngIf="usuarioService.usuarioLogado" (click)="menu.toggle()" class="btn btn-secondary">
     <mat-icon>menu</mat-icon>
   </button>
-
   <span class="navbar-brand">EuBusco</span>
-
 </nav>
 
-<mat-drawer-container autosize>
+<mat-drawer-container autosize [style.height]="usuarioService.usuarioLogado ? 'calc(100vh - 51px)' : '100vh'">
 
   <mat-drawer #menu mode="side">
     <div class="menu">
@@ -44,7 +41,8 @@
       </span>
 
       <span *ngIf="usuarioService.tipoUsuario === 1">
-        <button (click)="abrirPrograma(pages.CADASTRO_CIDADE)" class="btn btn-secondary rounded-0 text-left">Cadastro de
+        <button (click)="abrirPrograma(pages.CADASTRO_CIDADE)" class="btn btn-secondary rounded-0 text-left">Cadastro
+          de
           Cidade</button>
         <mat-divider></mat-divider>
       </span>

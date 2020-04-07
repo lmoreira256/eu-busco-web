@@ -1,21 +1,23 @@
-<mat-card>
+<div class="container">
 
-    <mat-card-title class="text-center">
-        AUTENTICAÇÃO
-    </mat-card-title>
+  <section class="form">
 
-    <mat-card-content>
+    <img src="../../assets/images/logo.png" alt="Eu Busco" />
 
-        <mat-form-field class="w-100 mt-3 mb35">
-            <input matInput #login placeholder="Usuario">
-        </mat-form-field>
+    <form class="form" [formGroup]="userForm" (ngSubmit)="login()">
 
-        <mat-form-field class="w-100 mt-3 mb-3">
-            <input matInput #senha (keydown)="onKeydown($event)" type="password" placeholder="Senha">
-        </mat-form-field>
+      <h1>Faça seu login</h1>
 
-        <button mat-raised-button (click)="entrar()" class="w-100 mt-5 mb-5" color="primary">Entrar</button>
+      <input type="text" formControlName="username" (keydown)="onKeydown($event)" placeholder="Usuário">
 
-    </mat-card-content>
+      <input type="password" formControlName="password" (keydown)="onKeydown($event)" placeholder="Senha">
 
-</mat-card>
+      <button type="submit" class="button" [disabled]="!userForm.valid">Entrar</button>
+
+    </form>
+
+  </section>
+
+  <img src="../../assets/images/imagem.png" alt="Eu Busco" />
+
+</div>
