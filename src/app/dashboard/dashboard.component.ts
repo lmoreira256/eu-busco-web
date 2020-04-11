@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
+import { UserService } from '../services/user.service';
 import { UtilService } from '../services/util.service';
 import { MensagensService } from '../services/mensagens.service';
 import { EntregaService } from '../services/entrega.service';
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   public rowHeight: string;
 
   constructor(
-    public usuarioService: UsuarioService,
+    public userService: UserService,
     public entregaService: EntregaService,
     private util: UtilService,
     private mensagem: MensagensService,
@@ -32,9 +32,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.adquirirDadosUsuario();
 
-    if (this.usuarioService.tipoUsuario === 2) {
+    if (this.userService.tipoUsuario === 2) {
       this.entregaService.buscarAbertasCliente();
-    } else if (this.usuarioService.tipoUsuario === 3) {
+    } else if (this.userService.tipoUsuario === 3) {
       this.entregaService.buscarAbertasEntregador();
     } else {
       this.entregaService.buscarTodasAbertas();
@@ -42,8 +42,8 @@ export class DashboardComponent implements OnInit {
   }
 
   private adquirirDadosUsuario() {
-    this.usuarioService.buscarDadosUsuario().then((retorno: any) => {
-      this.usuarioService.dadosUsuario = retorno;
+    this.userService.buscarDadosUsuario().then((retorno: any) => {
+      this.userService.dadosUsuario = retorno;
     }).catch(() => {
       this.util.showAlertDanger(this.mensagem.FALHA_DADOS_USUARIO);
     }).finally(() => this.util.requestProgress = false);

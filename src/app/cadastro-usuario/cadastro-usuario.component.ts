@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TipoUsuarioService } from '../services/tipo-usuario.service';
-import { UsuarioService } from '../services/usuario.service';
+import { UserService } from '../services/user.service';
 import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
 import { Md5 } from 'md5-typescript';
@@ -40,7 +40,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
-    private usuarioService: UsuarioService,
+    private userService: UserService,
     private mensagem: MensagensService,
     private util: UtilService,
     private fb: FormBuilder
@@ -53,14 +53,14 @@ export class CadastroUsuarioComponent implements OnInit {
 
   adicionarOuvinteBotao() {
     this.userForm.get('code').valueChanges.subscribe((newValue: string) => {
-      debugger
+
       console.log(newValue);
     });
   }
 
   public onSubmit() {
     const me = this;
-    debugger
+
     const senha = me.senha.nativeElement.value;
     const confirmarSenha = me.confirmarSenha.nativeElement.value;
 
@@ -76,7 +76,7 @@ export class CadastroUsuarioComponent implements OnInit {
       loginUsuario: me.login.nativeElement.value
     };
 
-    me.usuarioService.salvar(parametros).then((retorno: any) => {
+    me.userService.salvar(parametros).then((retorno: any) => {
       if (retorno) {
         me.util.showAlertSuccess(me.mensagem.SALVO_SUCESSO);
         me.limparCampos();

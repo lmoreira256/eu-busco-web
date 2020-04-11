@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
+import { UserService } from '../services/user.service';
 import { Md5 } from 'md5-typescript';
 import { Router } from '@angular/router';
 import { UtilService } from '../services/util.service';
@@ -20,7 +20,7 @@ export class AutenticacaoComponent {
   });
 
   constructor(
-    private userSevice: UsuarioService,
+    private userSevice: UserService,
     private router: Router,
     private util: UtilService,
     private mensagem: MensagensService,
@@ -42,7 +42,7 @@ export class AutenticacaoComponent {
       senha: Md5.init(me.userForm.value.password)
     };
 
-    me.userSevice.realizarLogin(parametros).then((obj: any) => {
+    me.userSevice.login(parametros).then((obj: any) => {
       me.userSevice.usuarioLogado = obj.logado;
       me.userSevice.idUsuario = obj.idUsuario;
       me.userSevice.tipoUsuario = obj.tipoUsuario;

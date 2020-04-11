@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UtilService } from './services/util.service';
-import { UsuarioService } from './services/usuario.service';
+import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { PagesService } from './services/pages.service';
 
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public util: UtilService,
-    public usuarioService: UsuarioService,
+    public userService: UserService,
     private router: Router,
     public pages: PagesService
   ) { }
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   private verificarLogin() {
-    if (!this.usuarioService.usuarioLogado) {
+    if (!this.userService.usuarioLogado) {
       this.router.navigate(['']);
     }
   }
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     const me = this;
 
     me.menu.close();
-    me.usuarioService.usuarioLogado = false;
+    me.userService.usuarioLogado = false;
     me.router.navigate(['']);
   }
 
