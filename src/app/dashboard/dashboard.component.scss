@@ -12,6 +12,7 @@
 
 .container header span {
   font-size: 20px;
+  width: 200px;
   margin-left: 24px;
 }
 
@@ -25,7 +26,7 @@
   margin-top: 0;
 }
 
-.container header button {
+.container header .button-logoff {
   height: 60px;
   width: 60px;
   border-radius: 4px;
@@ -33,6 +34,24 @@
   background: transparent;
   margin-left: 16px;
   transition: border-color 0.2s;
+  margin: 0px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.container header .button-logoff mat-icon {
+  color: #474747;
+}
+
+.container header .button-new-delivery {
+  width: 200px;
+  margin: 0 24px;
+}
+
+.container header .container-buttons {
+  margin-left: auto;
+  display: flex;
 }
 
 .container header button:hover {
