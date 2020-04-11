@@ -7,8 +7,18 @@
 
     <div class="container-buttons">
       <button class="button button-new-delivery">Cadastrar entrega</button>
-      <button class="button button-logoff">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">power_settings_new</mat-icon>
+
+      <button class="button button-little button-menu" [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="Button menu">list</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+      <button class="button button-logoff button-little">
+        <mat-icon aria-hidden="false" aria-label="Button log-off">power_settings_new</mat-icon>
       </button>
     </div>
   </header>

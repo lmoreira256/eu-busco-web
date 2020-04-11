@@ -108,3 +108,10 @@ button:disabled {
     border-radius: 8px;
   }
 }
+
+.progress {
+  height: 5px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}

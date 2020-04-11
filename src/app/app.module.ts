@@ -29,6 +29,7 @@ import { ModalEntregaComponent } from './entregas/modal-entrega/modal-entrega.co
 import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
 import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
     MatGridListModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },

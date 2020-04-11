@@ -4,8 +4,9 @@
   </div>
 </div>
 
-<div class="progress" *ngIf="util.requestProgress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger w-100" role="progressbar"
+<div class="progress">
+  <div [style.display]="util.requestProgress ? '' : 'none'"
+    class="progress-bar progress-bar-striped progress-bar-animated bg-danger w-100" role="progressbar"
     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
