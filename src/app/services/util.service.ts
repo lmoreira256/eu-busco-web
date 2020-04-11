@@ -26,7 +26,7 @@ export class UtilService {
 
       setTimeout(() => {
         me.alertDanger = false;
-      }, 1500);
+      }, 2000);
     } else {
       setTimeout(() => {
         me.showAlertDanger(mensage);
@@ -43,7 +43,7 @@ export class UtilService {
 
       setTimeout(() => {
         me.alertSuccess = false;
-      }, 1500);
+      }, 2000);
     } else {
       setTimeout(() => {
         me.showAlertSuccess(mensage);

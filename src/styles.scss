@@ -92,3 +92,19 @@ button:disabled {
 .mat-drawer-container {
   background: #E9ECEF;
 }
+
+.area-alerta {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  margin-top: 20px;
+
+  .alert {
+    min-width: 200px;
+    max-width: 730px;
+    margin: 0 auto;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+}
