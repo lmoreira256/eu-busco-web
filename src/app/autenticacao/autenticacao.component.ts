@@ -43,12 +43,12 @@ export class AutenticacaoComponent {
     };
 
     me.userSevice.login(parametros).then((obj: any) => {
-      me.userSevice.usuarioLogado = obj.logado;
-      me.userSevice.idUsuario = obj.idUsuario;
-      me.userSevice.tipoUsuario = obj.tipoUsuario;
-      me.userSevice.nomeUsuario = obj.nomeUsuario;
+      me.userSevice.usuarioLogado = obj.success;
+      me.userSevice.idUsuario = obj.userCode;
+      me.userSevice.tipoUsuario = obj.userType;
+      me.userSevice.nomeUsuario = obj.userName;
 
-      if (obj.logado) {
+      if (obj.success) {
         me.router.navigate([me.pages.DASHBOARD]);
       } else {
         me.util.showAlertDanger(me.mensagem.SENHA_INVALIDA);

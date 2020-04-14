@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 900px;
   height: calc(100vh - 5px);
   margin: 0 auto;
   display: flex;
@@ -28,6 +28,7 @@
   margin-bottom: 10px;
 }
 
-img {
-  border: 1px dotted;
+.image-presentation {
+  width: 400px;
+  height: 575px;
 }
