@@ -1,57 +1,57 @@
 <mat-card>
 
-    <mat-card-title class="text-center">
-        Cadastro de entregas
-    </mat-card-title>
+  <mat-card-title class="text-center">
+    Cadastro de entregas
+  </mat-card-title>
 
-    <mat-card-content>
+  <mat-card-content>
 
-        <mat-form-field>
-            <input matInput #titulo placeholder="Título">
-        </mat-form-field>
+    <mat-form-field>
+      <input matInput #titulo placeholder="Título">
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Endereço de coleta</mat-label>
-            <mat-select #enderecoColeta>
-                <mat-option *ngFor="let endereco of enderecoService.enderecosUsuario" [value]="endereco.id">
-                    {{ endereco.titulo }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Endereço de coleta</mat-label>
+      <mat-select #enderecoColeta>
+        <mat-option *ngFor="let endereco of enderecoService.enderecosUsuario" [value]="endereco.id">
+          {{ endereco.titulo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Endereço de entrega</mat-label>
-            <mat-select #enderecoEntrega>
-                <mat-option *ngFor="let endereco of enderecoService.enderecosUsuario" [value]="endereco.id">
-                    {{ endereco.titulo }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Endereço de entrega</mat-label>
+      <mat-select #enderecoEntrega>
+        <mat-option *ngFor="let endereco of enderecoService.enderecosUsuario" [value]="endereco.id">
+          {{ endereco.titulo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field>
-            <textarea matInput #volume placeholder="Volume"></textarea>
-        </mat-form-field>
+    <mat-form-field>
+      <textarea matInput #volume placeholder="Volume"></textarea>
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput [matDatepicker]="dataColeta" placeholder="Data para coleta">
-            <mat-datepicker-toggle matSuffix [for]="dataColeta"></mat-datepicker-toggle>
-            <mat-datepicker #dataColeta [startAt]="startDate"></mat-datepicker>
-        </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataColeta" placeholder="Data para coleta" (dateChange)="addDateColeta($event)">
+      <mat-datepicker-toggle matSuffix [for]="dataColeta"></mat-datepicker-toggle>
+      <mat-datepicker #dataColeta [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput [matDatepicker]="dataEntrega" placeholder="Data de entrega">
-            <mat-datepicker-toggle matSuffix [for]="dataEntrega"></mat-datepicker-toggle>
-            <mat-datepicker #dataEntrega [startAt]="startDate"></mat-datepicker>
-        </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataEntrega" placeholder="Data de entrega" (dateChange)="addDateEntrega($event)">
+      <mat-datepicker-toggle matSuffix [for]="dataEntrega"></mat-datepicker-toggle>
+      <mat-datepicker #dataEntrega [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
 
-        <mat-form-field>
-            <textarea matInput #descricao placeholder="Deixe alguma informação importante para a entrega"></textarea>
-        </mat-form-field>
+    <mat-form-field>
+      <textarea matInput #descricao placeholder="Deixe alguma informação importante para a entrega"></textarea>
+    </mat-form-field>
 
-    </mat-card-content>
+  </mat-card-content>
 
-    <mat-card-actions>
-        <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
-    </mat-card-actions>
+  <mat-card-actions>
+    <button type="button" (click)="salvar()" class="btn btn-success">Salvar</button>
+  </mat-card-actions>
 
 </mat-card>
