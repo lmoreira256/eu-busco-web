@@ -28,6 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalEntregaComponent } from './entregas/modal-entrega/modal-entrega.component';
 import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
 import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -60,11 +62,15 @@ import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avalia
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },
-    DatePipe
+    DatePipe,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })

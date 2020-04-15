@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
+import { UserService } from '../services/user.service';
 import { EntregaService } from '../services/entrega.service';
 import { AvaliacaoService } from '../services/avaliacao.service';
 import { MensagensService } from '../services/mensagens.service';
@@ -27,7 +27,7 @@ export class CadastroAvaliacaoComponent implements OnInit {
   public nota: any;
 
   constructor(
-    public usuarioService: UsuarioService,
+    public userService: UserService,
     public entregaService: EntregaService,
     private avaliacaoService: AvaliacaoService,
     private mensagem: MensagensService,
@@ -35,7 +35,7 @@ export class CadastroAvaliacaoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tituloPage = this.tituloPage + (this.usuarioService.tipoUsuario === 2 ? ' do Entregador' : ' do Cliente');
+    this.tituloPage = this.tituloPage + (this.userService.tipoUsuario === 2 ? ' do Entregador' : ' do Cliente');
     this.entregaService.buscarEntregasAvaliacao();
   }
 
@@ -51,7 +51,7 @@ export class CadastroAvaliacaoComponent implements OnInit {
 
     const parametros = {
       codigoEntrega: me.entrega.value,
-      codigoCliente: me.usuarioService.idUsuario,
+      codigoCliente: me.userService.idUsuario,
       nota: me.nota.value,
       descricao: me.comentario.nativeElement.value
     };

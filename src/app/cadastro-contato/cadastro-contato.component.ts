@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
+import { UserService } from '../services/user.service';
 import { TipoContatoService } from '../services/tipo-contato.service';
 import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
@@ -24,7 +24,7 @@ export class CadastroContatoComponent implements OnInit {
   public descricao: any;
 
   constructor(
-    public usuarioService: UsuarioService,
+    public userService: UserService,
     public tipoContatoService: TipoContatoService,
     private mensagem: MensagensService,
     private util: UtilService,
@@ -39,7 +39,7 @@ export class CadastroContatoComponent implements OnInit {
   private buscarUsuarios() {
     const me = this;
 
-    me.usuarioService.buscarTodosUsuarios().then((retorno: any) => {
+    me.userService.buscarTodosUsuarios().then((retorno: any) => {
       me.usuarios = retorno;
     });
   }

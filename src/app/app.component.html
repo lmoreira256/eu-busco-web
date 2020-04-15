@@ -4,80 +4,10 @@
   </div>
 </div>
 
-<nav class="navbar navbar-dark bg-dark">
+<div class="progress">
+  <div [style.display]="util.requestProgress ? '' : 'none'"
+    class="progress-bar progress-bar-striped progress-bar-animated bg-danger w-100" role="progressbar"
+    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
-  <button *ngIf="usuarioService.usuarioLogado" (click)="menu.toggle()" class="btn btn-secondary">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <span class="navbar-brand">EuBusco</span>
-
-</nav>
-
-<mat-drawer-container autosize>
-
-  <mat-drawer #menu mode="side">
-    <div class="menu">
-
-      <span>
-        <button (click)="abrirPrograma(pages.DASHBOARD)"
-          class="btn btn-secondary rounded-0 text-left">Dashboard</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span *ngIf="usuarioService.tipoUsuario !== 3">
-        <button (click)="abrirPrograma(pages.CADASTRO_ENTREGA)" class="btn btn-secondary rounded-0 text-left">Cadastro
-          de Entrega</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span *ngIf="usuarioService.tipoUsuario !== 3">
-        <button (click)="abrirPrograma(pages.CADASTRO_ENDERECO)" class="btn btn-secondary rounded-0 text-left">Cadastro
-          de Endereço</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span *ngIf="usuarioService.tipoUsuario === 1">
-        <button (click)="abrirPrograma(pages.CADASTRO_USUARIO)" class="btn btn-secondary rounded-0 text-left">Cadastro
-          de Usuário</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span *ngIf="usuarioService.tipoUsuario === 1">
-        <button (click)="abrirPrograma(pages.CADASTRO_CIDADE)" class="btn btn-secondary rounded-0 text-left">Cadastro de
-          Cidade</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span *ngIf="usuarioService.tipoUsuario !== 2">
-        <button (click)="abrirPrograma(pages.ENTREGAS)" class="btn btn-secondary rounded-0 text-left">Entregas
-          Disponíveis</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span *ngIf="usuarioService.tipoUsuario === 1">
-        <button (click)="abrirPrograma(pages.CADASTRO_CONTATO)" class="btn btn-secondary rounded-0 text-left">Cadastro
-          de Contatos</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <span>
-        <button (click)="abrirPrograma(pages.CADASTRO_AVALIACAO)" class="btn btn-secondary rounded-0 text-left">Cadastro
-          de Avaliação</button>
-        <mat-divider></mat-divider>
-      </span>
-
-      <button (click)="sair()" class="btn botao-sair fixed-bottom rounded-0">Sair</button>
-
-    </div>
-  </mat-drawer>
-
-  <div class="progress">
-    <div [style.display]="util.requestProgress ? '' : 'none'"
-      class="progress-bar progress-bar-striped progress-bar-animated w-100 rounded-0" role="progressbar"
-      aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-
-  <router-outlet></router-outlet>
-
-</mat-drawer-container>
+<router-outlet></router-outlet>

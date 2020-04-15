@@ -1,58 +1,57 @@
-<mat-card>
+<div class="container">
 
-    <mat-card-title class="text-center">
-        Seja bem vindo, {{ usuarioService.nomeUsuario }}.
-    </mat-card-title>
+  <header>
+    <img class="logo-imagem" src="../../assets/images/logo_imagem.png" alt="Be The Hero" />
 
-    <mat-card-content>
+    <span>Bem vindo, TESTE</span>
 
-        <span>Sua nota atual:&nbsp; {{ usuarioService.dadosUsuario.nota }}</span>
-        <br>
-        <span>Suas entregas abertas:&nbsp; {{ usuarioService.dadosUsuario.entregasAbertas }}</span>
-        <br>
-        <span>Total de entregas:&nbsp; {{ usuarioService.dadosUsuario.totalEntregas }}</span>
+    <div class="container-buttons">
+      <button class="button button-new-delivery">Cadastrar entrega</button>
 
-        <div *ngIf="entregaService.entregasAbertas.length > 0" class="text-center">
+      <button class="button button-little button-menu" [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="Button menu">menu</mat-icon>
+      </button>
 
-            <br>
-            <mat-divider></mat-divider>
-            <br>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
 
-            <span class="titulo font-weight-bold">Entregas abertas para você:</span>
+      <button class="button button-logoff button-little">
+        <mat-icon aria-hidden="false" aria-label="Button log-off">power_settings_new</mat-icon>
+      </button>
+    </div>
+  </header>
 
-            <mat-grid-list [cols]="quantidadeCards" [rowHeight]="rowHeight">
-                <mat-grid-tile *ngFor="let entrega of entregaService.entregasAbertas">
+  <h1>Casos cadastrados</h1>
 
-                    <mat-card (click)="abrirEntrega(entrega)" class="card-entrega w-100">
+  <ul>
+    <li>
+      <strong>CASO:</strong>
+      <p>1</p>
 
-                        <mat-card-title class="text-center">
-                            {{ entrega.tituloEntrega }}
-                        </mat-card-title>
+      <strong>DESCRIÇÃO:</strong>
+      <p>1</p>
 
-                        <mat-card-content class="w-100">
+      <strong>VALOR:</strong>
+      <p>450</p>
 
-                            <span class="text-truncate text-center descricao">{{ entrega.descricaoEntrega }}</span>
+      <button type="button">
+      </button>
+    </li>
+    <li>
+      <strong>CASO:</strong>
+      <p>1</p>
 
-                            <br>
-                            <mat-divider></mat-divider>
-                            <br>
+      <strong>DESCRIÇÃO:</strong>
+      <p>1</p>
 
-                            <span class="text-left dados-entrega">Cliente:&nbsp; {{ entrega.nomeCliente }}</span>
-                            <span class="text-left dados-entrega">Volume:&nbsp; {{ entrega.volumeEntrega }}</span>
-                            <span class="text-left dados-entrega">Data de coleta:&nbsp;
-                                {{ util.formatarData(entrega.dataColetaEntrega) }}</span>
-                            <span class="text-left dados-entrega">Data prazo de entrega:&nbsp;
-                                {{ util.formatarData(entrega.dataPrazoEntrega) }}</span>
+      <strong>VALOR:</strong>
+      <p>450</p>
 
-                        </mat-card-content>
+      <button type="button">
+      </button>
+    </li>
+  </ul>
 
-                    </mat-card>
-
-                </mat-grid-tile>
-            </mat-grid-list>
-
-        </div>
-
-    </mat-card-content>
-
-</mat-card>
+</div>

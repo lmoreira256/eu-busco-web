@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioService } from './usuario.service';
+import { UserService } from './user.service';
 import { UtilService } from './util.service';
 import { MensagensService } from './mensagens.service';
 
@@ -13,7 +13,7 @@ export class EntregaService {
 
   constructor(
     private http: HttpClient,
-    private usuarioService: UsuarioService,
+    private userService: UserService,
     private util: UtilService,
     private mensagem: MensagensService
   ) { }
@@ -23,7 +23,7 @@ export class EntregaService {
   }
 
   public buscarAbertasCliente() {
-    this.http.get('entregaService/buscarAbertasCliente?idUsuario=' + this.usuarioService.idUsuario).toPromise().then((retorno: any) => {
+    this.http.get('entregaService/buscarAbertasCliente?idUsuario=' + this.userService.idUsuario).toPromise().then((retorno: any) => {
       this.entregasAbertas = retorno;
     }).catch(() => {
       this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
@@ -31,7 +31,7 @@ export class EntregaService {
   }
 
   public buscarAbertasEntregador() {
-    this.http.get('entregaService/buscarAbertasEntregador?idUsuario=' + this.usuarioService.idUsuario).toPromise().then((retorno: any) => {
+    this.http.get('entregaService/buscarAbertasEntregador?idUsuario=' + this.userService.idUsuario).toPromise().then((retorno: any) => {
       this.entregasAbertas = retorno;
     }).catch(() => {
       this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
@@ -71,7 +71,7 @@ export class EntregaService {
   }
 
   public buscarEntregasAvaliacao() {
-    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.idUsuario)
+    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.userService.idUsuario)
       .toPromise().then((retorno: any) => {
         this.entregasAbertas = retorno;
       }).catch(() => {
