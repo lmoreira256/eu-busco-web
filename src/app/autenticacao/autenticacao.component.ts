@@ -42,13 +42,13 @@ export class AutenticacaoComponent {
       senha: Md5.init(me.userForm.value.password)
     };
 
-    me.userSevice.login(parametros).then((obj: any) => {
-      me.userSevice.usuarioLogado = obj.success;
-      me.userSevice.idUsuario = obj.userCode;
-      me.userSevice.tipoUsuario = obj.userType;
-      me.userSevice.nomeUsuario = obj.userName;
+    me.userSevice.realizarLogin(parametros).then((retorno: any) => {
+      me.userSevice.usuarioLogado = retorno.success;
+      me.userSevice.idUsuario = retorno.userCode;
+      me.userSevice.tipoUsuario = retorno.userType;
+      me.userSevice.nomeUsuario = retorno.userName;
 
-      if (obj.success) {
+      if (retorno.success) {
         me.router.navigate([me.pages.DASHBOARD]);
       } else {
         me.util.showAlertDanger(me.mensagem.SENHA_INVALIDA);

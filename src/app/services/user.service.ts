@@ -20,7 +20,7 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  public login(parametros: any) {
+  public realizarLogin(parametros: any) {
     return this.http.post('userService/login', parametros).toPromise();
   }
 
