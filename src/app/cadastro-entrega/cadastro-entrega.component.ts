@@ -7,11 +7,18 @@ import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
 import { Router } from '@angular/router';
 import { PagesService } from '../services/pages.service';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/format-datepicker/format-datepicker';
+import { MatDatepickerInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-cadastro-entrega',
   templateUrl: './cadastro-entrega.component.html',
-  styleUrls: ['./cadastro-entrega.component.scss']
+  styleUrls: ['./cadastro-entrega.component.scss'],
+  providers: [
+    { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+  ]
 })
 export class CadastroEntregaComponent implements OnInit {
 
@@ -31,8 +38,11 @@ export class CadastroEntregaComponent implements OnInit {
   public volume: any;
 
   public startDate = new Date();
-  public dataColeta = new FormControl(new Date());
-  public dataEntrega = new FormControl(new Date());
+  public dataColeta = new FormControl();
+  public dataEntrega = new FormControl();
+
+  public dateColeta: Date;
+  public dateEntrega: Date;
 
   constructor(
     private enderecoService: EnderecoService,
@@ -57,8 +67,8 @@ export class CadastroEntregaComponent implements OnInit {
       codigoEnderecoEntrega: me.enderecoEntrega.value,
       titulo: me.titulo.nativeElement.value,
       descricao: me.descricao.nativeElement.value,
-      dataColeta: me.dataColeta.value,
-      dataPrazoEntrega: me.dataEntrega.value,
+      dataColeta: me.dateColeta,
+      dataPrazoEntrega: me.dateEntrega,
       volume: me.volume.nativeElement.value
     };
 
@@ -85,6 +95,14 @@ export class CadastroEntregaComponent implements OnInit {
     me.dataColeta.setValue('');
     me.dataEntrega.setValue('');
     me.volume.nativeElement.value = '';
+  }
+
+  addDateColeta(event: MatDatepickerInputEvent<Date>) {
+    this.dateColeta = event.value;
+  }
+
+  addDateEntrega(event: MatDatepickerInputEvent<Date>) {
+    this.dateEntrega = event.value;
   }
 
 }
