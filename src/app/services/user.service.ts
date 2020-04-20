@@ -9,7 +9,7 @@ export class UserService {
   public usuarioLogado = false;
   public idUsuario: number;
   public tipoUsuario: number;
-  public nomeUsuario: string;
+  public userName: string;
   public dadosUsuario = {
     nota: '-',
     entregasAbertas: '-',

@@ -6,6 +6,7 @@ import { EntregaService } from '../services/entrega.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEntregaComponent } from '../entregas/modal-entrega/modal-entrega.component';
 import { PagesService } from '../services/pages.service';
+import { DeliveryService } from '../services/delivery.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,13 +18,16 @@ export class DashboardComponent implements OnInit {
   public quantidadeCards: number;
   public rowHeight: string;
 
+  public showDeliveriesToUser = false;
+
   constructor(
     public userService: UserService,
     public entregaService: EntregaService,
+    public dialog: MatDialog,
+    public deliveryService: DeliveryService,
     private util: UtilService,
     private mensagem: MensagensService,
-    public dialog: MatDialog,
-    private pages: PagesService
+    private pages: PagesService,
   ) {
     this.quantidadeCards = util.calcularTamanhoGrid();
     this.rowHeight = util.calcularRowHeightGrid();
@@ -31,6 +35,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.adquirirDadosUsuario();
+
+    this.showDeliveriesToUser = this.deliveryService.deliveriesToUser.length > 0;
+    console.log(this.showDeliveriesToUser);
 
     if (this.userService.tipoUsuario === 2) {
       this.entregaService.buscarAbertasCliente();

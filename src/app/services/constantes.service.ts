@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ConstantesService {
 
-  public urlServidor = 'https://eu-busco-server.herokuapp.com/';
-  // public urlServidor = 'http://localhost:8080/';
+  // public urlServidor = 'https://eu-busco-server.herokuapp.com/';
+  public urlServidor = 'http://localhost:8080/';
   public desenvolvimento = true;
 
   constructor() { }

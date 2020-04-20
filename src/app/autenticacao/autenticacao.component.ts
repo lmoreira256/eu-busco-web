@@ -6,6 +6,8 @@ import { UtilService } from '../services/util.service';
 import { MensagensService } from '../services/mensagens.service';
 import { PagesService } from '../services/pages.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DeliveryService } from '../services/delivery.service';
+import { ReturnLoginDTO } from '../interfaces/return-login-dto';
 
 @Component({
   selector: 'app-autenticacao',
@@ -25,7 +27,8 @@ export class AutenticacaoComponent {
     private util: UtilService,
     private mensagem: MensagensService,
     private pages: PagesService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private deliveryService: DeliveryService
   ) { }
 
   onKeydown(event: any) {
@@ -42,17 +45,14 @@ export class AutenticacaoComponent {
       senha: Md5.init(me.userForm.value.password)
     };
 
-    me.userSevice.realizarLogin(parametros).then((retorno: any) => {
-      me.userSevice.usuarioLogado = retorno.success;
-      me.userSevice.idUsuario = retorno.userCode;
-      me.userSevice.tipoUsuario = retorno.userType;
-      me.userSevice.nomeUsuario = retorno.userName;
+    me.userSevice.realizarLogin(parametros).then((obj: ReturnLoginDTO) => {
+      me.userSevice.idUsuario = obj.userCode;
+      me.userSevice.tipoUsuario = obj.userType;
+      me.userSevice.userName = obj.userName;
 
-      if (retorno.success) {
-        me.router.navigate([me.pages.DASHBOARD]);
-      } else {
-        me.util.showAlertDanger(me.mensagem.SENHA_INVALIDA);
-      }
+      me.deliveryService.deliveriesToUser = obj.deliveriesToUser;
+
+      me.router.navigate([me.pages.DASHBOARD]);
     }).catch(() => {
       me.util.showAlertDanger(me.mensagem.FALHA_LOGIN);
     }).finally(() => this.util.requestProgress = false);

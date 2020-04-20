@@ -3,7 +3,7 @@
   <header>
     <img class="logo-imagem" src="../../assets/images/logo_imagem.png" alt="Be The Hero" />
 
-    <span>Bem vindo, TESTE</span>
+    <span>Bem vindo, {{ userService.userName }}</span>
 
     <div class="container-buttons">
       <button class="button button-new-delivery">Cadastrar entrega</button>
@@ -22,6 +22,43 @@
       </button>
     </div>
   </header>
+
+  <div *ngIf="showDeliveriesToUser">
+
+    <h1>Suas entregas</h1>
+
+    <div *ngFor="let delivery of deliveryService.deliveriesToUser">
+      <ul>
+        <li>
+          <strong>TÍTULO:</strong>
+          <p>{{ delivery.deliveryTitle }}</p>
+
+          <strong>DESCRIÇÃO:</strong>
+          <p>{{ delivery.deliveryDescriptio }}</p>
+
+          <strong>VOLUME:</strong>
+          <p>{{ delivery.bulk }}</p>
+
+          <button type="button">
+          </button>
+        </li>
+        <li>
+          <strong>CASO:</strong>
+          <p>1</p>
+
+          <strong>DESCRIÇÃO:</strong>
+          <p>1</p>
+
+          <strong>VALOR:</strong>
+          <p>450</p>
+
+          <button type="button">
+          </button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
 
   <h1>Casos cadastrados</h1>
 
