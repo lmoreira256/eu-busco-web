@@ -6,18 +6,54 @@
     <span>Bem vindo, {{ userService.userName }}</span>
 
     <div class="container-buttons">
-      <button class="button button-new-delivery">Cadastrar entrega</button>
+      <button class="button button-new-delivery" (click)="openDeliveryRecord()">Cadastrar entrega</button>
 
-      <button class="button button-little button-menu" [matMenuTriggerFor]="menu">
+      <button class="button button-little button-icon-menu" [matMenuTriggerFor]="menu">
         <mat-icon aria-hidden="false" aria-label="Button menu">menu</mat-icon>
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+        <span *ngIf="userService.tipoUsuario !== 3">
+          <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENTREGA)">Cadastro de
+            Entrega</button>
+          <mat-divider></mat-divider>
+        </span>
+
+        <span *ngIf="userService.tipoUsuario !== 3">
+          <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENDERECO)">Cadastro
+            de Endereço</button>
+          <mat-divider></mat-divider>
+        </span>
+
+        <span *ngIf="userService.tipoUsuario === 1">
+          <button class="button button-menu" (click)="openProgram(pages.CADASTRO_USUARIO)">Cadastro
+            de Usuário</button>
+          <mat-divider></mat-divider>
+        </span>
+
+        <span *ngIf="userService.tipoUsuario === 1">
+          <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CIDADE)">Cadastro de Cidade</button>
+          <mat-divider></mat-divider>
+        </span>
+
+        <span *ngIf="userService.tipoUsuario === 2">
+          <button class="button button-menu" (click)="openProgram(pages.ENTREGAS)">Entregas
+            Disponíveis</button>
+          <mat-divider></mat-divider>
+        </span>
+
+        <span *ngIf="userService.tipoUsuario === 1">
+          <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CONTATO)">Cadastro
+            de Contatos</button>
+          <mat-divider></mat-divider>
+        </span>
+
+        <button class="button button-menu" (click)="openProgram(pages.CADASTRO_AVALIACAO)">Cadastro
+          de Avaliação</button>
+        <mat-divider></mat-divider>
       </mat-menu>
 
-      <button class="button button-logoff button-little">
+      <button class="button button-logoff button-little" (click)="logOff()">
         <mat-icon aria-hidden="false" aria-label="Button log-off">power_settings_new</mat-icon>
       </button>
     </div>
@@ -27,68 +63,29 @@
 
     <h1>Suas entregas</h1>
 
-    <div *ngFor="let delivery of deliveryService.deliveriesToUser">
-      <ul>
-        <li>
-          <strong>TÍTULO:</strong>
-          <p>{{ delivery.deliveryTitle }}</p>
+    <ul>
+      <li *ngFor="let delivery of deliveryService.deliveriesToUser">
+        <strong>TÍTULO:</strong>
+        <p>{{ delivery.deliveryTitle }}</p>
 
-          <strong>DESCRIÇÃO:</strong>
-          <p>{{ delivery.deliveryDescriptio }}</p>
+        <strong>DESCRIÇÃO:</strong>
+        <p>{{ delivery.deliveryDescriptio }}</p>
 
-          <strong>VOLUME:</strong>
-          <p>{{ delivery.bulk }}</p>
+        <strong>VOLUME:</strong>
+        <p>{{ delivery.bulk }}</p>
+
+        <div>
+          <button type="button">
+            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
+          </button>
 
           <button type="button">
+            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
           </button>
-        </li>
-        <li>
-          <strong>CASO:</strong>
-          <p>1</p>
-
-          <strong>DESCRIÇÃO:</strong>
-          <p>1</p>
-
-          <strong>VALOR:</strong>
-          <p>450</p>
-
-          <button type="button">
-          </button>
-        </li>
-      </ul>
-    </div>
+        </div>
+      </li>
+    </ul>
 
   </div>
-
-  <h1>Casos cadastrados</h1>
-
-  <ul>
-    <li>
-      <strong>CASO:</strong>
-      <p>1</p>
-
-      <strong>DESCRIÇÃO:</strong>
-      <p>1</p>
-
-      <strong>VALOR:</strong>
-      <p>450</p>
-
-      <button type="button">
-      </button>
-    </li>
-    <li>
-      <strong>CASO:</strong>
-      <p>1</p>
-
-      <strong>DESCRIÇÃO:</strong>
-      <p>1</p>
-
-      <strong>VALOR:</strong>
-      <p>450</p>
-
-      <button type="button">
-      </button>
-    </li>
-  </ul>
 
 </div>

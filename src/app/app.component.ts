@@ -31,17 +31,4 @@ export class AppComponent implements OnInit {
     }
   }
 
-  public sair() {
-    const me = this;
-
-    me.menu.close();
-    me.userService.usuarioLogado = false;
-    me.router.navigate(['']);
-  }
-
-  public abrirPrograma(programa: string) {
-    this.menu.close();
-    this.router.navigate([programa]);
-  }
-
 }

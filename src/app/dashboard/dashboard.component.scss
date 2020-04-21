@@ -49,7 +49,7 @@
   display: flex;
 }
 
-.container header .container-buttons .button-menu {
+.container header .container-buttons .button-icon-menu {
   margin-right: 15px;
 }
 
@@ -108,4 +108,30 @@
   color: #737380;
   line-height: 21px;
   font-size: 16px;
+}
+
+.container ul li button mat-icon {
+  color: #474747;
+}
+
+.container ul li div button .icon-create {
+  margin-right: 10px;
+}
+
+.container ul li div {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+.button-menu {
+  margin: 0;
+  background: transparent;
+  color: #474747;
+  border-radius: 0;
+  width: 240px;
+}
+
+.button-menu:hover {
+  background: #e6e6e6;
 }

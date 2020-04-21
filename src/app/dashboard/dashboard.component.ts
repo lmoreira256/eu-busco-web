@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalEntregaComponent } from '../entregas/modal-entrega/modal-entrega.component';
 import { PagesService } from '../services/pages.service';
 import { DeliveryService } from '../services/delivery.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,10 +25,11 @@ export class DashboardComponent implements OnInit {
     public userService: UserService,
     public entregaService: EntregaService,
     public dialog: MatDialog,
+    public pages: PagesService,
     public deliveryService: DeliveryService,
     private util: UtilService,
     private mensagem: MensagensService,
-    private pages: PagesService,
+    private router: Router
   ) {
     this.quantidadeCards = util.calcularTamanhoGrid();
     this.rowHeight = util.calcularRowHeightGrid();
@@ -64,6 +66,21 @@ export class DashboardComponent implements OnInit {
         paginaAberta: this.pages.DASHBOARD
       }
     });
+  }
+
+  logOff() {
+    const me = this;
+
+    me.userService.usuarioLogado = false;
+    me.router.navigate(['']);
+  }
+
+  openProgram(program: string) {
+    this.router.navigate([program]);
+  }
+
+  openDeliveryRecord() {
+    this.openProgram(this.pages.CADASTRO_ENTREGA);
   }
 
 }
