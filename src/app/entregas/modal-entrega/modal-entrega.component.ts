@@ -101,13 +101,6 @@ export class ModalEntregaComponent {
     me.entregaService.finalizarEntrega(me.entrega.idEntrega).then((retorno: any) => {
       if (retorno) {
         me.fecharModal();
-
-        me.usuarioService.buscarDadosUsuario().then((ret: any) => {
-          me.usuarioService.dadosUsuario = ret;
-        }).catch(() => {
-          me.util.showAlertDanger(me.mensagem.FALHA_DADOS_USUARIO);
-        }).finally(() => me.util.requestProgress = false);
-
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_FINALIZAR_ENTREGA);
       }

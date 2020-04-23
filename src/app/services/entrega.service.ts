@@ -12,8 +12,8 @@ export class EntregaService {
 
   public entregasUsuarioAbertas: PaginacaoDTO;
   public entregasUsuarioAndamento: PaginacaoDTO;
-  public entregasParaEntregar: PaginacaoDTO;
   public entregasAbertas: PaginacaoDTO;
+  public entregasFinalizadas: PaginacaoDTO;
 
   constructor(
     private http: HttpClient,

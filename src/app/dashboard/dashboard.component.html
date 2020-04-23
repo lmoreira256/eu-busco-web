@@ -59,12 +59,99 @@
     </div>
   </header>
 
-  <div *ngIf="showDeliveriesToUser">
+  <div *ngIf="exibirEntregasUsuarioAndamento">
 
-    <h1>Suas entregas</h1>
+    <h1>Entregas em andamento</h1>
+
+    <ul>
+      <li *ngFor="let entrega of entregaService.entregasUsuarioAndamento.lista">
+        <strong>TÍTULO:</strong>
+        <p>{{ entrega.titulo }}</p>
+
+        <strong>DESCRIÇÃO:</strong>
+        <p>{{ entrega.descricao }}</p>
+
+        <strong>VOLUME:</strong>
+        <p>{{ entrega.volume }}</p>
+
+        <div>
+          <button type="button">
+            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
+          </button>
+
+          <button type="button">
+            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+  <div *ngIf="exibirEntregasAbertas">
+
+    <h1>Entregas abertas</h1>
+
+    <ul>
+      <li *ngFor="let entrega of entregaService.entregasAbertas.lista">
+        <strong>TÍTULO:</strong>
+        <p>{{ entrega.titulo }}</p>
+
+        <strong>DESCRIÇÃO:</strong>
+        <p>{{ entrega.descricao }}</p>
+
+        <strong>VOLUME:</strong>
+        <p>{{ entrega.volume }}</p>
+
+        <div>
+          <button type="button">
+            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
+          </button>
+
+          <button type="button">
+            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+  <div *ngIf="exibirEntregasUsuarioAbertas">
+
+    <h1>Entregas aguardando</h1>
 
     <ul>
       <li *ngFor="let entrega of entregaService.entregasUsuarioAbertas.lista">
+        <strong>TÍTULO:</strong>
+        <p>{{ entrega.titulo }}</p>
+
+        <strong>DESCRIÇÃO:</strong>
+        <p>{{ entrega.descricao }}</p>
+
+        <strong>VOLUME:</strong>
+        <p>{{ entrega.volume }}</p>
+
+        <div>
+          <button type="button">
+            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
+          </button>
+
+          <button type="button">
+            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+  <div *ngIf="exibirEntregasFinalizadas">
+
+    <h1>Entregas aguardando</h1>
+
+    <ul>
+      <li *ngFor="let entrega of entregaService.entregasFinalizadas.lista">
         <strong>TÍTULO:</strong>
         <p>{{ entrega.titulo }}</p>
 

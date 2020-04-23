@@ -51,7 +51,7 @@ export class AutenticacaoComponent {
       me.usuarioService.nomeUsuario = retornoEfetuarLoginDTO.nomeUsuario;
 
       me.entregaService.entregasAbertas = retornoEfetuarLoginDTO.entregasAbertas;
-      me.entregaService.entregasParaEntregar = retornoEfetuarLoginDTO.entregasParaEntregar;
+      me.entregaService.entregasFinalizadas = retornoEfetuarLoginDTO.entregasFinalizadas;
       me.entregaService.entregasUsuarioAbertas = retornoEfetuarLoginDTO.entregasUsuarioAbertas;
       me.entregaService.entregasUsuarioAndamento = retornoEfetuarLoginDTO.entregasUsuarioAndamento;
 

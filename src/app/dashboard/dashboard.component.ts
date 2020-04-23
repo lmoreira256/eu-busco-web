@@ -18,7 +18,10 @@ export class DashboardComponent implements OnInit {
   public quantidadeCards: number;
   public rowHeight: string;
 
-  public showDeliveriesToUser = false;
+  public exibirEntregasUsuarioAbertas = false;
+  public exibirEntregasUsuarioAndamento = false;
+  public exibirEntregasAbertas = false;
+  public exibirEntregasFinalizadas = false;
 
   constructor(
     public usuarioService: UsuarioService,
@@ -34,10 +37,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adquirirDadosUsuario();
-
-    this.showDeliveriesToUser = this.entregaService.entregasAbertas.lista.length > 0;
-    console.log(this.showDeliveriesToUser);
+    this.exibirEntregasUsuarioAbertas = this.entregaService.entregasUsuarioAbertas.lista.length > 0;
+    this.exibirEntregasUsuarioAndamento = this.entregaService.entregasUsuarioAndamento.lista.length > 0;
+    this.exibirEntregasAbertas = this.entregaService.entregasAbertas.lista.length > 0;
+    this.exibirEntregasFinalizadas = this.entregaService.entregasFinalizadas.lista.length > 0;
 
     if (this.usuarioService.tipoUsuario === 2) {
       this.entregaService.buscarAbertasCliente();
@@ -46,14 +49,6 @@ export class DashboardComponent implements OnInit {
     } else {
       this.entregaService.buscarTodasAbertas();
     }
-  }
-
-  private adquirirDadosUsuario() {
-    this.usuarioService.buscarDadosUsuario().then((retorno: any) => {
-      this.usuarioService.dadosUsuario = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_DADOS_USUARIO);
-    }).finally(() => this.util.requestProgress = false);
   }
 
   public abrirEntrega(entrega: any): void {

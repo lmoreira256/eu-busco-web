@@ -9,7 +9,7 @@ export interface RetornoEfetuarLoginDTO {
     nota: number;
     entregasUsuarioAbertas: PaginacaoDTO;
     entregasUsuarioAndamento: PaginacaoDTO;
-    entregasParaEntregar: PaginacaoDTO;
     entregasAbertas: PaginacaoDTO;
+    entregasFinalizadas: PaginacaoDTO;
 
 }

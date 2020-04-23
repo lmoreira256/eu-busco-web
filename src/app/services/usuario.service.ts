@@ -24,10 +24,6 @@ export class UsuarioService {
     return this.http.post('usuarioService/efetuarLogin', parametros).toPromise();
   }
 
-  public buscarDadosUsuario() {
-    return this.http.get('usuarioService/buscarDadosUsuario?idUsuario=' + this.codigoUsuario).toPromise();
-  }
-
   public salvar(parametros: any) {
     return this.http.post('usuarioService/novoUsuario', parametros).toPromise();
   }
