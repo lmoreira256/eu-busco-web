@@ -3,7 +3,7 @@
   <header>
     <img class="logo-imagem" src="../../assets/images/logo_imagem.png" alt="Be The Hero" />
 
-    <span>Bem vindo, {{ userService.userName }}</span>
+    <span>Bem vindo, {{ usuarioService.userName }}</span>
 
     <div class="container-buttons">
       <button class="button button-new-delivery" (click)="openDeliveryRecord()">Cadastrar entrega</button>
@@ -13,36 +13,36 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <span *ngIf="userService.tipoUsuario !== 3">
+        <span *ngIf="usuarioService.tipoUsuario !== 3">
           <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENTREGA)">Cadastro de
             Entrega</button>
           <mat-divider></mat-divider>
         </span>
 
-        <span *ngIf="userService.tipoUsuario !== 3">
+        <span *ngIf="usuarioService.tipoUsuario !== 3">
           <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENDERECO)">Cadastro
             de Endereço</button>
           <mat-divider></mat-divider>
         </span>
 
-        <span *ngIf="userService.tipoUsuario === 1">
+        <span *ngIf="usuarioService.tipoUsuario === 1">
           <button class="button button-menu" (click)="openProgram(pages.CADASTRO_USUARIO)">Cadastro
             de Usuário</button>
           <mat-divider></mat-divider>
         </span>
 
-        <span *ngIf="userService.tipoUsuario === 1">
+        <span *ngIf="usuarioService.tipoUsuario === 1">
           <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CIDADE)">Cadastro de Cidade</button>
           <mat-divider></mat-divider>
         </span>
 
-        <span *ngIf="userService.tipoUsuario === 2">
+        <span *ngIf="usuarioService.tipoUsuario === 2">
           <button class="button button-menu" (click)="openProgram(pages.ENTREGAS)">Entregas
             Disponíveis</button>
           <mat-divider></mat-divider>
         </span>
 
-        <span *ngIf="userService.tipoUsuario === 1">
+        <span *ngIf="usuarioService.tipoUsuario === 1">
           <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CONTATO)">Cadastro
             de Contatos</button>
           <mat-divider></mat-divider>
@@ -64,15 +64,15 @@
     <h1>Suas entregas</h1>
 
     <ul>
-      <li *ngFor="let delivery of deliveryService.deliveriesToUser">
+      <li *ngFor="let entrega of entregaService.entregasUsuarioAbertas.lista">
         <strong>TÍTULO:</strong>
-        <p>{{ delivery.deliveryTitle }}</p>
+        <p>{{ entrega.titulo }}</p>
 
         <strong>DESCRIÇÃO:</strong>
-        <p>{{ delivery.deliveryDescriptio }}</p>
+        <p>{{ entrega.descricao }}</p>
 
         <strong>VOLUME:</strong>
-        <p>{{ delivery.bulk }}</p>
+        <p>{{ entrega.volume }}</p>
 
         <div>
           <button type="button">

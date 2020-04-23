@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EnderecoService } from '../services/endereco.service';
-import { UserService } from '../services/user.service';
+import { UsuarioService } from '../services/usuario.service';
 import { FormControl } from '@angular/forms';
 import { EntregaService } from '../services/entrega.service';
 import { MensagensService } from '../services/mensagens.service';
@@ -46,7 +46,7 @@ export class CadastroEntregaComponent implements OnInit {
 
   constructor(
     private enderecoService: EnderecoService,
-    private userService: UserService,
+    private usuarioService: UsuarioService,
     private entregaService: EntregaService,
     private mensagem: MensagensService,
     private util: UtilService,
@@ -62,7 +62,7 @@ export class CadastroEntregaComponent implements OnInit {
     const me = this;
 
     const parametros = {
-      codigoCliente: me.userService.idUsuario,
+      codigoCliente: me.usuarioService.codigoUsuario,
       codigoEnderecoColeta: me.enderecoColeta.value,
       codigoEnderecoEntrega: me.enderecoEntrega.value,
       titulo: me.titulo.nativeElement.value,

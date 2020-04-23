@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
+import { UsuarioService } from './usuario.service';
 import { UtilService } from './util.service';
 import { MensagensService } from './mensagens.service';
+import { PaginacaoDTO } from '../interfaces/paginacao-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntregaService {
 
-  public entregasAbertas = [];
+  public entregasUsuarioAbertas: PaginacaoDTO;
+  public entregasUsuarioAndamento: PaginacaoDTO;
+  public entregasParaEntregar: PaginacaoDTO;
+  public entregasAbertas: PaginacaoDTO;
 
   constructor(
     private http: HttpClient,
-    private userService: UserService,
+    private usuarioService: UsuarioService,
     private util: UtilService,
     private mensagem: MensagensService
   ) { }
@@ -23,7 +27,7 @@ export class EntregaService {
   }
 
   public buscarAbertasCliente() {
-    this.http.get('entregaService/buscarAbertasCliente?idUsuario=' + this.userService.idUsuario).toPromise().then((retorno: any) => {
+    this.http.get('entregaService/buscarAbertasCliente?idUsuario=' + this.usuarioService.codigoUsuario).toPromise().then((retorno: any) => {
       this.entregasAbertas = retorno;
     }).catch(() => {
       this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
@@ -31,11 +35,12 @@ export class EntregaService {
   }
 
   public buscarAbertasEntregador() {
-    this.http.get('entregaService/buscarAbertasEntregador?idUsuario=' + this.userService.idUsuario).toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
+    this.http.get('entregaService/buscarAbertasEntregador?idUsuario=' + this.usuarioService.codigoUsuario)
+      .toPromise().then((retorno: any) => {
+        this.entregasAbertas = retorno;
+      }).catch(() => {
+        this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
+      }).finally(() => this.util.requestProgress = false);
   }
 
   public buscarDisponiveis() {
@@ -71,7 +76,7 @@ export class EntregaService {
   }
 
   public buscarEntregasAvaliacao() {
-    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.userService.idUsuario)
+    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.codigoUsuario)
       .toPromise().then((retorno: any) => {
         this.entregasAbertas = retorno;
       }).catch(() => {

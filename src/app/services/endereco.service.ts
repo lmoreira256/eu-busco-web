@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
+import { UsuarioService } from './usuario.service';
 import { UtilService } from './util.service';
 import { MensagensService } from './mensagens.service';
 
@@ -13,7 +13,7 @@ export class EnderecoService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService,
+    private usuarioService: UsuarioService,
     private util: UtilService,
     private mensagem: MensagensService
   ) { }
@@ -23,11 +23,12 @@ export class EnderecoService {
   }
 
   public adquirirTodosUsuario() {
-    this.http.get('enderecoService/adquirirTodosUsuario?idUsuario=' + this.userService.idUsuario).toPromise().then((retorno: any) => {
-      this.enderecosUsuario = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENDERECO);
-    }).finally(() => this.util.requestProgress = false);
+    this.http.get('enderecoService/adquirirTodosUsuario?idUsuario=' + this.usuarioService.codigoUsuario).toPromise()
+      .then((retorno: any) => {
+        this.enderecosUsuario = retorno;
+      }).catch(() => {
+        this.util.showAlertDanger(this.mensagem.FALHA_ENDERECO);
+      }).finally(() => this.util.requestProgress = false);
   }
 
 }

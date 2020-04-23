@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { CidadeService } from '../services/cidade.service';
 import { EnderecoService } from '../services/endereco.service';
-import { UserService } from '../services/user.service';
+import { UsuarioService } from '../services/usuario.service';
 import { UtilService } from '../services/util.service';
 import { MensagensService } from '../services/mensagens.service';
 
@@ -33,7 +33,7 @@ export class CadastroEnderecoComponent implements OnInit {
   constructor(
     public cidadeService: CidadeService,
     private enderecoService: EnderecoService,
-    private userService: UserService,
+    private usuarioService: UsuarioService,
     private util: UtilService,
     private mensagem: MensagensService
   ) { }
@@ -47,7 +47,7 @@ export class CadastroEnderecoComponent implements OnInit {
 
     const parametros = {
       codigoCidade: me.campoCidade.value,
-      codigoUsuario: me.userService.idUsuario,
+      codigoUsuario: me.usuarioService.codigoUsuario,
       descricaoEndereco: me.descricaoEndereco.nativeElement.value,
       titulo: me.titulo.nativeElement.value,
       complemento: me.complemento.nativeElement.value,

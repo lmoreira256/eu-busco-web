@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UsuarioService } from '../services/usuario.service';
 import { UtilService } from '../services/util.service';
 import { MensagensService } from '../services/mensagens.service';
 import { EntregaService } from '../services/entrega.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEntregaComponent } from '../entregas/modal-entrega/modal-entrega.component';
 import { PagesService } from '../services/pages.service';
-import { DeliveryService } from '../services/delivery.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,11 +21,10 @@ export class DashboardComponent implements OnInit {
   public showDeliveriesToUser = false;
 
   constructor(
-    public userService: UserService,
+    public usuarioService: UsuarioService,
     public entregaService: EntregaService,
     public dialog: MatDialog,
     public pages: PagesService,
-    public deliveryService: DeliveryService,
     private util: UtilService,
     private mensagem: MensagensService,
     private router: Router
@@ -38,12 +36,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.adquirirDadosUsuario();
 
-    this.showDeliveriesToUser = this.deliveryService.deliveriesToUser.length > 0;
+    this.showDeliveriesToUser = this.entregaService.entregasAbertas.lista.length > 0;
     console.log(this.showDeliveriesToUser);
 
-    if (this.userService.tipoUsuario === 2) {
+    if (this.usuarioService.tipoUsuario === 2) {
       this.entregaService.buscarAbertasCliente();
-    } else if (this.userService.tipoUsuario === 3) {
+    } else if (this.usuarioService.tipoUsuario === 3) {
       this.entregaService.buscarAbertasEntregador();
     } else {
       this.entregaService.buscarTodasAbertas();
@@ -51,8 +49,8 @@ export class DashboardComponent implements OnInit {
   }
 
   private adquirirDadosUsuario() {
-    this.userService.buscarDadosUsuario().then((retorno: any) => {
-      this.userService.dadosUsuario = retorno;
+    this.usuarioService.buscarDadosUsuario().then((retorno: any) => {
+      this.usuarioService.dadosUsuario = retorno;
     }).catch(() => {
       this.util.showAlertDanger(this.mensagem.FALHA_DADOS_USUARIO);
     }).finally(() => this.util.requestProgress = false);
@@ -71,7 +69,7 @@ export class DashboardComponent implements OnInit {
   logOff() {
     const me = this;
 
-    me.userService.usuarioLogado = false;
+    me.usuarioService.usuarioLogado = false;
     me.router.navigate(['']);
   }
 

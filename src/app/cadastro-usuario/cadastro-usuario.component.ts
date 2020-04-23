@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TipoUsuarioService } from '../services/tipo-usuario.service';
-import { UserService } from '../services/user.service';
+import { UsuarioService } from '../services/usuario.service';
 import { MensagensService } from '../services/mensagens.service';
 import { UtilService } from '../services/util.service';
 import { Md5 } from 'md5-typescript';
@@ -40,7 +40,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   constructor(
     public tipoUsuarioService: TipoUsuarioService,
-    private userService: UserService,
+    private usuarioService: UsuarioService,
     private mensagem: MensagensService,
     private util: UtilService,
     private fb: FormBuilder
@@ -76,7 +76,7 @@ export class CadastroUsuarioComponent implements OnInit {
       loginUsuario: me.login.nativeElement.value
     };
 
-    me.userService.salvar(parametros).then((retorno: any) => {
+    me.usuarioService.salvar(parametros).then((retorno: any) => {
       if (retorno) {
         me.util.showAlertSuccess(me.mensagem.SALVO_SUCESSO);
         me.limparCampos();

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UsuarioService } from '../services/usuario.service';
 import { EntregaService } from '../services/entrega.service';
 import { AvaliacaoService } from '../services/avaliacao.service';
 import { MensagensService } from '../services/mensagens.service';
@@ -27,7 +27,7 @@ export class CadastroAvaliacaoComponent implements OnInit {
   public nota: any;
 
   constructor(
-    public userService: UserService,
+    public usuarioService: UsuarioService,
     public entregaService: EntregaService,
     private avaliacaoService: AvaliacaoService,
     private mensagem: MensagensService,
@@ -35,15 +35,15 @@ export class CadastroAvaliacaoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tituloPage = this.tituloPage + (this.userService.tipoUsuario === 2 ? ' do Entregador' : ' do Cliente');
+    this.tituloPage = this.tituloPage + (this.usuarioService.tipoUsuario === 2 ? ' do Entregador' : ' do Cliente');
     this.entregaService.buscarEntregasAvaliacao();
   }
 
   public selecionarAvaliado() {
     const entregaSelecionada = this.entrega.value;
-    const entrega = this.entregaService.entregasAbertas.find((x: any) => x.id = entregaSelecionada);
+    const entrega = this.entregaService.entregasAbertas.lista.find((x: any) => x.id = entregaSelecionada);
 
-    this.avaliado.nativeElement.value = entrega.nomeAvaliado;
+    this.avaliado.nativeElement.value = entrega.nomeAvaliado || '';
   }
 
   public salvar() {
@@ -51,7 +51,7 @@ export class CadastroAvaliacaoComponent implements OnInit {
 
     const parametros = {
       codigoEntrega: me.entrega.value,
-      codigoCliente: me.userService.idUsuario,
+      codigoCliente: me.usuarioService.codigoUsuario,
       nota: me.nota.value,
       descricao: me.comentario.nativeElement.value
     };

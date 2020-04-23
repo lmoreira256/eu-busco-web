@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UtilService } from 'src/app/services/util.service';
 import { EntregaService } from 'src/app/services/entrega.service';
-import { UserService } from 'src/app/services/user.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { MensagensService } from 'src/app/services/mensagens.service';
 import { PagesService } from 'src/app/services/pages.service';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class ModalEntregaComponent {
   constructor(
     public util: UtilService,
     public entregaService: EntregaService,
-    private userService: UserService,
+    private usuarioService: UsuarioService,
     private mensagem: MensagensService,
     private pages: PagesService,
     public dialogRef: MatDialogRef<ModalEntregaComponent>,
@@ -37,7 +37,7 @@ export class ModalEntregaComponent {
     if (me.paginaAberta === me.pages.ENTREGAS) {
       me.entregaService.buscarDisponiveis();
     } else {
-      if (me.userService.tipoUsuario !== 3) {
+      if (me.usuarioService.tipoUsuario !== 3) {
         me.entregaService.buscarAbertasCliente();
       } else {
         me.entregaService.buscarAbertasEntregador();
@@ -52,7 +52,7 @@ export class ModalEntregaComponent {
 
     const parametros = {
       codigoEntrega: me.entrega.idEntrega,
-      codigoEntregador: me.userService.idUsuario
+      codigoEntregador: me.usuarioService.codigoUsuario
     };
 
     me.entregaService.pegarEntrega(parametros).then((retorno: any) => {
@@ -102,8 +102,8 @@ export class ModalEntregaComponent {
       if (retorno) {
         me.fecharModal();
 
-        me.userService.buscarDadosUsuario().then((ret: any) => {
-          me.userService.dadosUsuario = ret;
+        me.usuarioService.buscarDadosUsuario().then((ret: any) => {
+          me.usuarioService.dadosUsuario = ret;
         }).catch(() => {
           me.util.showAlertDanger(me.mensagem.FALHA_DADOS_USUARIO);
         }).finally(() => me.util.requestProgress = false);
