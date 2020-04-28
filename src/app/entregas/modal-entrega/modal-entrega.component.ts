@@ -34,16 +34,6 @@ export class ModalEntregaComponent {
   public fecharModal() {
     const me = this;
 
-    if (me.paginaAberta === me.pages.ENTREGAS) {
-      me.entregaService.buscarDisponiveis();
-    } else {
-      if (me.usuarioService.tipoUsuario !== 3) {
-        me.entregaService.buscarAbertasCliente();
-      } else {
-        me.entregaService.buscarAbertasEntregador();
-      }
-    }
-
     me.dialogRef.close();
   }
 

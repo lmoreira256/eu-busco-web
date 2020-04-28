@@ -10,10 +10,10 @@ import { PaginacaoDTO } from '../interfaces/paginacao-dto';
 })
 export class EntregaService {
 
-  public entregasUsuarioAbertas: PaginacaoDTO;
-  public entregasUsuarioAndamento: PaginacaoDTO;
-  public entregasAbertas: PaginacaoDTO;
-  public entregasFinalizadas: PaginacaoDTO;
+  public abertas: PaginacaoDTO;
+  public andamento: PaginacaoDTO;
+  public finalizadas: PaginacaoDTO;
+  public excluidas: PaginacaoDTO;
 
   constructor(
     private http: HttpClient,
@@ -24,31 +24,6 @@ export class EntregaService {
 
   public salvar(parametros: any) {
     return this.http.post('entregaService/salvar', parametros).toPromise();
-  }
-
-  public buscarAbertasCliente() {
-    this.http.get('entregaService/buscarAbertasCliente?idUsuario=' + this.usuarioService.codigoUsuario).toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
-  }
-
-  public buscarAbertasEntregador() {
-    this.http.get('entregaService/buscarAbertasEntregador?idUsuario=' + this.usuarioService.codigoUsuario)
-      .toPromise().then((retorno: any) => {
-        this.entregasAbertas = retorno;
-      }).catch(() => {
-        this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-      }).finally(() => this.util.requestProgress = false);
-  }
-
-  public buscarDisponiveis() {
-    this.http.get('entregaService/buscarDisponiveis').toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
   }
 
   public pegarEntrega(parametros: any) {
@@ -63,25 +38,8 @@ export class EntregaService {
     return this.http.post('entregaService/excluirEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
-  public buscarTodasAbertas() {
-    this.http.get('entregaService/buscarTodasAbertas').toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
-  }
-
   public finalizarEntrega(parametros: any) {
     return this.http.post('entregaService/finalizarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
-  }
-
-  public buscarEntregasAvaliacao() {
-    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.codigoUsuario)
-      .toPromise().then((retorno: any) => {
-        this.entregasAbertas = retorno;
-      }).catch(() => {
-        this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-      }).finally(() => this.util.requestProgress = false);
   }
 
 }

@@ -26,7 +26,6 @@ export class EntregasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.entregaService.buscarDisponiveis();
   }
 
   public abrirEntrega(entrega: any): void {

@@ -36,14 +36,10 @@ export class CadastroAvaliacaoComponent implements OnInit {
 
   ngOnInit() {
     this.tituloPage = this.tituloPage + (this.usuarioService.tipoUsuario === 2 ? ' do Entregador' : ' do Cliente');
-    this.entregaService.buscarEntregasAvaliacao();
   }
 
   public selecionarAvaliado() {
-    const entregaSelecionada = this.entrega.value;
-    const entrega = this.entregaService.entregasAbertas.lista.find((x: any) => x.id = entregaSelecionada);
 
-    this.avaliado.nativeElement.value = entrega.nomeAvaliado || '';
   }
 
   public salvar() {
@@ -59,7 +55,6 @@ export class CadastroAvaliacaoComponent implements OnInit {
     me.avaliacaoService.salvar(parametros).then((retorno: any) => {
       if (retorno) {
         me.util.showAlertSuccess(me.mensagem.SALVO_SUCESSO);
-        this.entregaService.buscarEntregasAvaliacao();
         me.limparCampos();
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_SALVAR_AVALIACAO);

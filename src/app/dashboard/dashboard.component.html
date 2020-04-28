@@ -3,7 +3,7 @@
   <header>
     <img class="logo-imagem" src="../../assets/images/logo_imagem.png" alt="Be The Hero" />
 
-    <span>Bem vindo, {{ usuarioService.userName }}</span>
+    <span>Bem vindo, {{ usuarioService.nomeUsuario }}</span>
 
     <div class="container-buttons">
       <button class="button button-new-delivery" (click)="openDeliveryRecord()">Cadastrar entrega</button>
@@ -59,12 +59,12 @@
     </div>
   </header>
 
-  <div *ngIf="exibirEntregasUsuarioAndamento">
+  <div *ngIf="entregaService.andamento.total > 0">
 
     <h1>Entregas em andamento</h1>
 
     <ul>
-      <li *ngFor="let entrega of entregaService.entregasUsuarioAndamento.lista">
+      <li *ngFor="let entrega of entregaService.andamento.lista">
         <strong>TÍTULO:</strong>
         <p>{{ entrega.titulo }}</p>
 
@@ -88,12 +88,12 @@
 
   </div>
 
-  <div *ngIf="exibirEntregasAbertas">
+  <div *ngIf="entregaService.abertas.total > 0">
 
     <h1>Entregas abertas</h1>
 
     <ul>
-      <li *ngFor="let entrega of entregaService.entregasAbertas.lista">
+      <li *ngFor="let entrega of entregaService.abertas.lista">
         <strong>TÍTULO:</strong>
         <p>{{ entrega.titulo }}</p>
 
@@ -117,12 +117,12 @@
 
   </div>
 
-  <div *ngIf="exibirEntregasUsuarioAbertas">
+  <div *ngIf="entregaService.finalizadas.total > 0">
 
-    <h1>Entregas aguardando</h1>
+    <h1>Entregas finalizadas</h1>
 
     <ul>
-      <li *ngFor="let entrega of entregaService.entregasUsuarioAbertas.lista">
+      <li *ngFor="let entrega of entregaService.finalizadas.lista">
         <strong>TÍTULO:</strong>
         <p>{{ entrega.titulo }}</p>
 
@@ -146,12 +146,12 @@
 
   </div>
 
-  <div *ngIf="exibirEntregasFinalizadas">
+  <div *ngIf="entregaService.excluidas.total > 0">
 
-    <h1>Entregas aguardando</h1>
+    <h1>Entregas excluídas</h1>
 
     <ul>
-      <li *ngFor="let entrega of entregaService.entregasFinalizadas.lista">
+      <li *ngFor="let entrega of entregaService.excluidas.lista">
         <strong>TÍTULO:</strong>
         <p>{{ entrega.titulo }}</p>
 

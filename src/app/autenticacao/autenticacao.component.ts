@@ -49,11 +49,12 @@ export class AutenticacaoComponent {
       me.usuarioService.codigoUsuario = retornoEfetuarLoginDTO.codigoUsuario;
       me.usuarioService.tipoUsuario = retornoEfetuarLoginDTO.tipoUsuario;
       me.usuarioService.nomeUsuario = retornoEfetuarLoginDTO.nomeUsuario;
+      me.usuarioService.nota = retornoEfetuarLoginDTO.nota;
 
-      me.entregaService.entregasAbertas = retornoEfetuarLoginDTO.entregasAbertas;
-      me.entregaService.entregasFinalizadas = retornoEfetuarLoginDTO.entregasFinalizadas;
-      me.entregaService.entregasUsuarioAbertas = retornoEfetuarLoginDTO.entregasUsuarioAbertas;
-      me.entregaService.entregasUsuarioAndamento = retornoEfetuarLoginDTO.entregasUsuarioAndamento;
+      me.entregaService.abertas = retornoEfetuarLoginDTO.entregas.abertas;
+      me.entregaService.andamento = retornoEfetuarLoginDTO.entregas.andamento;
+      me.entregaService.finalizadas = retornoEfetuarLoginDTO.entregas.finalizadas;
+      me.entregaService.excluidas = retornoEfetuarLoginDTO.entregas.excluidas;
 
       me.router.navigate([me.pages.DASHBOARD]);
     }).catch(() => {
