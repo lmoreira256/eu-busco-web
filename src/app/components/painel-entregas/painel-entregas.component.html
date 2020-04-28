@@ -1,0 +1,36 @@
+<mat-accordion>
+  <mat-expansion-panel expanded="true">
+
+    <mat-expansion-panel-header>
+      <h1>
+        {{ titulo }} ({{ entregas.total }})
+      </h1>
+    </mat-expansion-panel-header>
+
+    <ul>
+      <li *ngFor="let entrega of entregas.lista">
+        <strong>TÍTULO:</strong>
+        <p>{{ entrega.titulo }}</p>
+
+        <strong>DESCRIÇÃO:</strong>
+        <p>{{ entrega.descricao }}</p>
+
+        <strong>VOLUME:</strong>
+        <p>{{ entrega.volume }}</p>
+
+        <div>
+          <button type="button">
+            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
+          </button>
+
+          <button type="button">
+            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <button *ngIf="entregas.total > 4" type="button" class="button" (click)="verMais()">Ver mais</button>
+
+  </mat-expansion-panel>
+</mat-accordion>

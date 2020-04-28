@@ -57,165 +57,25 @@
     </div>
   </header>
 
-  <mat-accordion>
-    <mat-expansion-panel>
+  <div class="painel-entregas">
 
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Entregas abertas ({{ entregaService.abertas.total }})
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+    <app-painel-entregas *ngIf="entregaService.andamento.total > 0" titulo="Entregas em andamento"
+      [entregas]="entregaService.andamento"></app-painel-entregas>
 
-      <ul>
-        <li *ngFor="let entrega of entregaService.abertas.lista">
-          <strong>TÍTULO:</strong>
-          <p>{{ entrega.titulo }}</p>
+    <app-painel-entregas *ngIf="entregaService.abertas.total > 0" titulo="Entregas abertas"
+      [entregas]="entregaService.abertas" [verMaisFuncion]="buscarMaisEntregasAbertas"></app-painel-entregas>
 
-          <strong>DESCRIÇÃO:</strong>
-          <p>{{ entrega.descricao }}</p>
+    <app-painel-entregas *ngIf="entregaService.finalizadas.total > 0" titulo="Entregas finalizadas"
+      [entregas]="entregaService.finalizadas"></app-painel-entregas>
 
-          <strong>VOLUME:</strong>
-          <p>{{ entrega.volume }}</p>
-
-          <div>
-            <button type="button">
-              <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
-            </button>
-
-            <button type="button">
-              <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
-            </button>
-          </div>
-        </li>
-      </ul>
-
-      <button *ngIf="entregaService.abertas.total > 4" type="button" class="button">Ver mais</button>
-
-    </mat-expansion-panel>
-  </mat-accordion>
-
-  <div *ngIf="entregaService.andamento.total > 0">
-
-    <h1>Entregas em andamento ({{ entregaService.andamento.total }})</h1>
-
-    <ul>
-      <li *ngFor="let entrega of entregaService.andamento.lista">
-        <strong>TÍTULO:</strong>
-        <p>{{ entrega.titulo }}</p>
-
-        <strong>DESCRIÇÃO:</strong>
-        <p>{{ entrega.descricao }}</p>
-
-        <strong>VOLUME:</strong>
-        <p>{{ entrega.volume }}</p>
-
-        <div>
-          <button type="button">
-            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
-          </button>
-
-          <button type="button">
-            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
-          </button>
-        </div>
-      </li>
-    </ul>
-
-    <button *ngIf="entregaService.andamento.total > 4" type="button" class="button">Ver mais</button>
+    <app-painel-entregas *ngIf="entregaService.excluidas.total > 0" titulo="Entregas excluídas"
+      [entregas]="entregaService.excluidas"></app-painel-entregas>
 
   </div>
 
-  <div *ngIf="entregaService.abertas.total > 0">
-
-    <h1>Entregas abertas ({{ entregaService.abertas.total }})</h1>
-
-    <ul>
-      <li *ngFor="let entrega of entregaService.abertas.lista">
-        <strong>TÍTULO:</strong>
-        <p>{{ entrega.titulo }}</p>
-
-        <strong>DESCRIÇÃO:</strong>
-        <p>{{ entrega.descricao }}</p>
-
-        <strong>VOLUME:</strong>
-        <p>{{ entrega.volume }}</p>
-
-        <div>
-          <button type="button">
-            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
-          </button>
-
-          <button type="button">
-            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
-          </button>
-        </div>
-      </li>
-    </ul>
-
-    <button *ngIf="entregaService.abertas.total > 4" type="button" class="button">Ver mais</button>
-
-  </div>
-
-  <div *ngIf="entregaService.finalizadas.total > 0">
-
-    <h1>Entregas finalizadas ({{ entregaService.finalizadas.total }})</h1>
-
-    <ul>
-      <li *ngFor="let entrega of entregaService.finalizadas.lista">
-        <strong>TÍTULO:</strong>
-        <p>{{ entrega.titulo }}</p>
-
-        <strong>DESCRIÇÃO:</strong>
-        <p>{{ entrega.descricao }}</p>
-
-        <strong>VOLUME:</strong>
-        <p>{{ entrega.volume }}</p>
-
-        <div>
-          <button type="button">
-            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
-          </button>
-
-          <button type="button">
-            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
-          </button>
-        </div>
-      </li>
-    </ul>
-
-    <button *ngIf="entregaService.finalizadas.total > 4" type="button" class="button">Ver mais</button>
-
-  </div>
-
-  <div *ngIf="entregaService.excluidas.total > 0">
-
-    <h1>Entregas excluídas ({{ entregaService.excluidas.total }})</h1>
-
-    <ul>
-      <li *ngFor="let entrega of entregaService.excluidas.lista">
-        <strong>TÍTULO:</strong>
-        <p>{{ entrega.titulo }}</p>
-
-        <strong>DESCRIÇÃO:</strong>
-        <p>{{ entrega.descricao }}</p>
-
-        <strong>VOLUME:</strong>
-        <p>{{ entrega.volume }}</p>
-
-        <div>
-          <button type="button">
-            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
-          </button>
-
-          <button type="button">
-            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
-          </button>
-        </div>
-      </li>
-    </ul>
-
-    <button *ngIf="entregaService.excluidas.total > 4" type="button" class="button">Ver mais</button>
-
+  <div
+    *ngIf="entregaService.andamento.total === 0 && entregaService.abertas.total === 0 && entregaService.finalizadas.total === 0 && entregaService.excluidas.total === 0">
+    <h1>Sem entregas no momento...</h1>
   </div>
 
 </div>

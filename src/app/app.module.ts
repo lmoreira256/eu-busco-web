@@ -29,6 +29,7 @@ import { CadastroAvaliacaoComponent } from './pages/cadastro-avaliacao/cadastro-
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material';
+import { PainelEntregasComponent } from './components/painel-entregas/painel-entregas.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatExpansionModule } from '@angular/material';
     CadastroCidadeComponent,
     CadastroUsuarioComponent,
     CadastroContatoComponent,
-    CadastroAvaliacaoComponent
+    CadastroAvaliacaoComponent,
+    PainelEntregasComponent
   ],
   imports: [
     BrowserModule,
