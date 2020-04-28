@@ -57,6 +57,43 @@
     </div>
   </header>
 
+  <mat-accordion>
+    <mat-expansion-panel>
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Entregas abertas ({{ entregaService.abertas.total }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul>
+        <li *ngFor="let entrega of entregaService.abertas.lista">
+          <strong>TÍTULO:</strong>
+          <p>{{ entrega.titulo }}</p>
+
+          <strong>DESCRIÇÃO:</strong>
+          <p>{{ entrega.descricao }}</p>
+
+          <strong>VOLUME:</strong>
+          <p>{{ entrega.volume }}</p>
+
+          <div>
+            <button type="button">
+              <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
+            </button>
+
+            <button type="button">
+              <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <button *ngIf="entregaService.abertas.total > 4" type="button" class="button">Ver mais</button>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <div *ngIf="entregaService.andamento.total > 0">
 
     <h1>Entregas em andamento ({{ entregaService.andamento.total }})</h1>

@@ -138,3 +138,10 @@
 .container h1 {
   font-size: 30px;
 }
+
+.container mat-accordion mat-expansion-panel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-top: 100px;
+}

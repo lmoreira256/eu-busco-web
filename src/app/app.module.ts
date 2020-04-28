@@ -28,6 +28,7 @@ import { CadastroContatoComponent } from './pages/cadastro-contato/cadastro-cont
 import { CadastroAvaliacaoComponent } from './pages/cadastro-avaliacao/cadastro-avaliacao.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptadorService, multi: true },
