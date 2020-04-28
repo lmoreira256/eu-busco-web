@@ -3,7 +3,11 @@
   <header>
     <img class="logo-imagem" src="../../assets/images/logo_imagem.png" alt="Be The Hero" />
 
-    <span>Bem vindo, {{ usuarioService.nomeUsuario }}</span>
+    <div>
+      <span>Bem vindo, <b>{{ usuarioService.nomeUsuario }}</b></span>
+      <br>
+      <span>Sua nota: {{ usuarioService.nota }}</span>
+    </div>
 
     <div class="container-buttons">
       <button class="button button-new-delivery" (click)="openDeliveryRecord()">Cadastrar entrega</button>
@@ -61,7 +65,7 @@
 
   <div *ngIf="entregaService.andamento.total > 0">
 
-    <h1>Entregas em andamento</h1>
+    <h1>Entregas em andamento ({{ entregaService.andamento.total }})</h1>
 
     <ul>
       <li *ngFor="let entrega of entregaService.andamento.lista">
@@ -90,7 +94,7 @@
 
   <div *ngIf="entregaService.abertas.total > 0">
 
-    <h1>Entregas abertas</h1>
+    <h1>Entregas abertas ({{ entregaService.abertas.total }})</h1>
 
     <ul>
       <li *ngFor="let entrega of entregaService.abertas.lista">
@@ -119,7 +123,7 @@
 
   <div *ngIf="entregaService.finalizadas.total > 0">
 
-    <h1>Entregas finalizadas</h1>
+    <h1>Entregas finalizadas ({{ entregaService.finalizadas.total }})</h1>
 
     <ul>
       <li *ngFor="let entrega of entregaService.finalizadas.lista">
@@ -148,7 +152,7 @@
 
   <div *ngIf="entregaService.excluidas.total > 0">
 
-    <h1>Entregas excluídas</h1>
+    <h1>Entregas excluídas ({{ entregaService.excluidas.total }})</h1>
 
     <ul>
       <li *ngFor="let entrega of entregaService.excluidas.lista">
