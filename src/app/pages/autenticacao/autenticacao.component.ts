@@ -1,13 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 import { Md5 } from 'md5-typescript';
 import { Router } from '@angular/router';
-import { UtilService } from '../services/util.service';
-import { MensagensService } from '../services/mensagens.service';
-import { PagesService } from '../services/pages.service';
+import { UtilService } from '../../services/util.service';
+import { MensagensService } from '../../services/mensagens.service';
+import { PagesService } from '../../services/pages.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { RetornoEfetuarLoginDTO } from '../interfaces/retorno-efetuar-login-dto';
-import { EntregaService } from '../services/entrega.service';
+import { RetornoEfetuarLoginDTO } from '../../interfaces/retorno-efetuar-login-dto';
+import { EntregaService } from '../../services/entrega.service';
 
 @Component({
   selector: 'app-autenticacao',

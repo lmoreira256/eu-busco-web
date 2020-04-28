@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TipoUsuarioService } from '../services/tipo-usuario.service';
-import { UsuarioService } from '../services/usuario.service';
-import { MensagensService } from '../services/mensagens.service';
-import { UtilService } from '../services/util.service';
+import { TipoUsuarioService } from '../../services/tipo-usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { MensagensService } from '../../services/mensagens.service';
+import { UtilService } from '../../services/util.service';
 import { Md5 } from 'md5-typescript';
-import { Usuario } from '../interfaces/usuario';
+import { Usuario } from '../../interfaces/usuario';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({

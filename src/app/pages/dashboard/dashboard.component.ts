@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
-import { UtilService } from '../services/util.service';
-import { MensagensService } from '../services/mensagens.service';
-import { EntregaService } from '../services/entrega.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { UtilService } from '../../services/util.service';
+import { EntregaService } from '../../services/entrega.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalEntregaComponent } from '../entregas/modal-entrega/modal-entrega.component';
-import { PagesService } from '../services/pages.service';
+import { PagesService } from '../../services/pages.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,16 +29,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  public abrirEntrega(entrega: any): void {
-    this.dialog.open(ModalEntregaComponent, {
-      width: (this.util.tamanhoTela - 40).toString() + 'px',
-      data: {
-        entregaSelecionada: entrega,
-        paginaAberta: this.pages.DASHBOARD
-      }
-    });
   }
 
   logOff() {

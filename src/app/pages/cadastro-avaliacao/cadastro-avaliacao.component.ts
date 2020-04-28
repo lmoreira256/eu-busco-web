@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
-import { EntregaService } from '../services/entrega.service';
-import { AvaliacaoService } from '../services/avaliacao.service';
-import { MensagensService } from '../services/mensagens.service';
-import { UtilService } from '../services/util.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { EntregaService } from '../../services/entrega.service';
+import { AvaliacaoService } from '../../services/avaliacao.service';
+import { MensagensService } from '../../services/mensagens.service';
+import { UtilService } from '../../services/util.service';
 
 @Component({
   selector: 'app-cadastro-avaliacao',

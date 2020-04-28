@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EstadoService } from '../services/estado.service';
-import { CidadeService } from '../services/cidade.service';
-import { UtilService } from '../services/util.service';
-import { MensagensService } from '../services/mensagens.service';
+import { EstadoService } from '../../services/estado.service';
+import { CidadeService } from '../../services/cidade.service';
+import { UtilService } from '../../services/util.service';
+import { MensagensService } from '../../services/mensagens.service';
 
 @Component({
   selector: 'app-cadastro-cidade',

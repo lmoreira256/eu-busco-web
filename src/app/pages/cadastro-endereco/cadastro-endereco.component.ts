@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { CidadeService } from '../services/cidade.service';
-import { EnderecoService } from '../services/endereco.service';
-import { UsuarioService } from '../services/usuario.service';
-import { UtilService } from '../services/util.service';
-import { MensagensService } from '../services/mensagens.service';
+import { CidadeService } from '../../services/cidade.service';
+import { EnderecoService } from '../../services/endereco.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { UtilService } from '../../services/util.service';
+import { MensagensService } from '../../services/mensagens.service';
 
 @Component({
   selector: 'app-cadastro-endereco',

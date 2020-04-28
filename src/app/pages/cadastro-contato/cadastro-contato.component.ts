@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
-import { TipoContatoService } from '../services/tipo-contato.service';
-import { MensagensService } from '../services/mensagens.service';
-import { UtilService } from '../services/util.service';
-import { ContatoService } from '../services/contato.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { TipoContatoService } from '../../services/tipo-contato.service';
+import { MensagensService } from '../../services/mensagens.service';
+import { UtilService } from '../../services/util.service';
+import { ContatoService } from '../../services/contato.service';
 
 @Component({
   selector: 'app-cadastro-contato',

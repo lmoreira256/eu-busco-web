@@ -40,12 +40,6 @@
           <mat-divider></mat-divider>
         </span>
 
-        <span *ngIf="usuarioService.tipoUsuario === 2">
-          <button class="button button-menu" (click)="openProgram(pages.ENTREGAS)">Entregas
-            Disponíveis</button>
-          <mat-divider></mat-divider>
-        </span>
-
         <span *ngIf="usuarioService.tipoUsuario === 1">
           <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CONTATO)">Cadastro
             de Contatos</button>
@@ -90,6 +84,8 @@
       </li>
     </ul>
 
+    <button *ngIf="entregaService.andamento.total > 4" type="button" class="button">Ver mais</button>
+
   </div>
 
   <div *ngIf="entregaService.abertas.total > 0">
@@ -118,6 +114,8 @@
         </div>
       </li>
     </ul>
+
+    <button *ngIf="entregaService.abertas.total > 4" type="button" class="button">Ver mais</button>
 
   </div>
 
@@ -148,6 +146,8 @@
       </li>
     </ul>
 
+    <button *ngIf="entregaService.finalizadas.total > 4" type="button" class="button">Ver mais</button>
+
   </div>
 
   <div *ngIf="entregaService.excluidas.total > 0">
@@ -176,6 +176,8 @@
         </div>
       </li>
     </ul>
+
+    <button *ngIf="entregaService.excluidas.total > 4" type="button" class="button">Ver mais</button>
 
   </div>
 
