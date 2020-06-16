@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { PagesService } from 'src/app/services/pages.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,10 +11,16 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class MenuComponent implements OnInit {
 
   constructor(
-    public usuarioService: UsuarioService
+    public usuarioService: UsuarioService,
+    private pages: PagesService,
+    private util: UtilService
   ) { }
 
   ngOnInit() {
+  }
+
+  openDeliveryRecord() {
+    this.util.openProgram(this.pages.CADASTRO_ENTREGA);
   }
 
 }

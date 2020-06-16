@@ -3,7 +3,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { EntregaService } from '../../services/entrega.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PagesService } from '../../services/pages.service';
-import { Router } from '@angular/router';
+import { PaginacaoDTO } from '../../interfaces/paginacao-dto';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,33 +16,69 @@ export class DashboardComponent implements OnInit {
     public usuarioService: UsuarioService,
     public entregaService: EntregaService,
     public dialog: MatDialog,
-    public pages: PagesService,
-    private router: Router
+    public pages: PagesService
   ) { }
 
   ngOnInit() {
   }
 
-  logOff() {
+  buscarMaisEntregasAndamento() {
     const me = this;
+    const entragasAndamento = me.entregaService.andamento;
 
-    me.usuarioService.usuarioLogado = false;
-    me.router.navigate(['']);
-  }
+    if (entragasAndamento.lista.length == entragasAndamento.total) {
+      return;
+    }
 
-  openProgram(program: string) {
-    this.router.navigate([program]);
-  }
+    const page = (entragasAndamento.lista.length / 4) + 1;
 
-  openDeliveryRecord() {
-    this.openProgram(this.pages.CADASTRO_ENTREGA);
+    me.entregaService.buscarEntregasAndamento(page).then((retorno: PaginacaoDTO) => {
+      me.entregaService.andamento.lista = entragasAndamento.lista.concat(retorno.lista);
+    });
   }
 
   buscarMaisEntregasAbertas() {
-    console.log('buscarMaisEntregasAbertas');
+    const me = this;
+    const entragasAbertas = me.entregaService.abertas;
 
-    this.entregaService.buscarEntregasAbertas(this.entregaService.paginaEntregasAbertas + 1).then((obj) => {
+    if (entragasAbertas.lista.length == entragasAbertas.total) {
+      return;
+    }
 
+    const page = (entragasAbertas.lista.length / 4) + 1;
+
+    me.entregaService.buscarEntregasAbertas(page).then((retorno: PaginacaoDTO) => {
+      me.entregaService.abertas.lista = entragasAbertas.lista.concat(retorno.lista);
+    });
+  }
+
+  buscarMaisEntregasFinalizadas() {
+    const me = this;
+    const entragasFinalizadas = me.entregaService.finalizadas;
+
+    if (entragasFinalizadas.lista.length == entragasFinalizadas.total) {
+      return;
+    }
+
+    const page = (entragasFinalizadas.lista.length / 4) + 1;
+
+    me.entregaService.buscarEntregasFinalizadas(page).then((retorno: PaginacaoDTO) => {
+      me.entregaService.finalizadas.lista = entragasFinalizadas.lista.concat(retorno.lista);
+    });
+  }
+
+  buscarMaisEntregasExcluidas() {
+    const me = this;
+    const entragasExcluidas = me.entregaService.excluidas;
+
+    if (entragasExcluidas.lista.length == entragasExcluidas.total) {
+      return;
+    }
+
+    const page = (entragasExcluidas.lista.length / 4) + 1;
+
+    me.entregaService.buscarEntregasExcluidas(page).then((retorno: PaginacaoDTO) => {
+      me.entregaService.excluidas.lista = entragasExcluidas.lista.concat(retorno.lista);
     });
   }
 

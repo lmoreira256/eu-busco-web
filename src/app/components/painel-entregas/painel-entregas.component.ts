@@ -21,7 +21,6 @@ export class PainelEntregasComponent implements OnInit {
   }
 
   verMais() {
-    console.log('verMais');
     this.verMaisFuncion();
   }
 

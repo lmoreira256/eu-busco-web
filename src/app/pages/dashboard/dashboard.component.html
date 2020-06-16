@@ -15,13 +15,13 @@
   <div class="painel-entregas">
 
     <app-painel-entregas *ngIf="entregaService.andamento.total > 0" titulo="Entregas em andamento"
-      [entregas]="entregaService.andamento"></app-painel-entregas>
+      [entregas]="entregaService.andamento" [verMaisFuncion]="buscarMaisEntregasAndamento"></app-painel-entregas>
 
     <app-painel-entregas *ngIf="entregaService.abertas.total > 0" titulo="Entregas abertas"
       [entregas]="entregaService.abertas" [verMaisFuncion]="buscarMaisEntregasAbertas"></app-painel-entregas>
 
     <app-painel-entregas *ngIf="entregaService.finalizadas.total > 0" titulo="Entregas finalizadas"
-      [entregas]="entregaService.finalizadas"></app-painel-entregas>
+      [entregas]="entregaService.finalizadas" [verMaisFuncion]="buscarMaisEntregasFinalizadas"></app-painel-entregas>
 
     <app-painel-entregas *ngIf="entregaService.excluidas.total > 0" titulo="Entregas excluídas"
       [entregas]="entregaService.excluidas"></app-painel-entregas>

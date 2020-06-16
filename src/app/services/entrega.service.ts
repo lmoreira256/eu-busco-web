@@ -50,4 +50,28 @@ export class EntregaService {
     return this.http.get('entregaService/buscarEntregasAbertas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
+  buscarEntregasAndamento(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasAndamento' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  buscarEntregasFinalizadas(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasFinalizadas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  buscarEntregasExcluidas(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasExcluidas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
 }

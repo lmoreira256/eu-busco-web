@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,9 @@ export class UtilService {
   public tamanhoTela = window.innerWidth;
 
   constructor(
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private router: Router,
+    private usuarioService: UsuarioService
   ) { }
 
   public showAlertDanger(mensage: string) {
@@ -75,6 +79,17 @@ export class UtilService {
     }
 
     return '2:1';
+  }
+
+  public openProgram(program: string) {
+    this.router.navigate([program]);
+  }
+
+  logOff() {
+    const me = this;
+
+    me.usuarioService.usuarioLogado = false;
+    me.router.navigate(['']);
   }
 
 }

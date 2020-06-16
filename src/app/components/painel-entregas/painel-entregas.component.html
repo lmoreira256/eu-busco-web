@@ -30,7 +30,8 @@
       </li>
     </ul>
 
-    <button *ngIf="entregas.total > 4" type="button" class="button" (click)="verMais()">Ver mais</button>
+    <button *ngIf="entregas.lista.length < entregas.total" type="button" class="button" (click)="verMais()">Ver
+      mais</button>
 
   </mat-expansion-panel>
 </mat-accordion>
