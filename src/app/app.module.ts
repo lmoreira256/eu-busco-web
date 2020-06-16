@@ -30,6 +30,7 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material';
 import { PainelEntregasComponent } from './components/painel-entregas/painel-entregas.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PainelEntregasComponent } from './components/painel-entregas/painel-ent
     CadastroUsuarioComponent,
     CadastroContatoComponent,
     CadastroAvaliacaoComponent,
-    PainelEntregasComponent
+    PainelEntregasComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

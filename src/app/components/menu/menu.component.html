@@ -1,0 +1,45 @@
+<button *ngIf="usuarioService.tipoUsuario !== 3" class="button button-new-delivery"
+  (click)="openDeliveryRecord()">Cadastrar entrega</button>
+
+<button class="button button-little button-icon-menu" [matMenuTriggerFor]="menu">
+  <mat-icon aria-hidden="false" aria-label="Button menu">menu</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <span *ngIf="usuarioService.tipoUsuario !== 3">
+    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENTREGA)">Cadastro de
+      Entrega</button>
+    <mat-divider></mat-divider>
+  </span>
+
+  <span *ngIf="usuarioService.tipoUsuario !== 3">
+    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENDERECO)">Cadastro
+      de Endereço</button>
+    <mat-divider></mat-divider>
+  </span>
+
+  <span *ngIf="usuarioService.tipoUsuario === 1">
+    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_USUARIO)">Cadastro
+      de Usuário</button>
+    <mat-divider></mat-divider>
+  </span>
+
+  <span *ngIf="usuarioService.tipoUsuario === 1">
+    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CIDADE)">Cadastro de Cidade</button>
+    <mat-divider></mat-divider>
+  </span>
+
+  <span *ngIf="usuarioService.tipoUsuario === 1">
+    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CONTATO)">Cadastro
+      de Contatos</button>
+    <mat-divider></mat-divider>
+  </span>
+
+  <button class="button button-menu" (click)="openProgram(pages.CADASTRO_AVALIACAO)">Cadastro
+    de Avaliação</button>
+  <mat-divider></mat-divider>
+</mat-menu>
+
+<button class="button button-logoff button-little" (click)="logOff()">
+  <mat-icon aria-hidden="false" aria-label="Button log-off">power_settings_new</mat-icon>
+</button>

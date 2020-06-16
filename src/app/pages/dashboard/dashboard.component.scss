@@ -22,41 +22,6 @@
   margin-top: 0;
 }
 
-.container header .container-buttons {
-  margin-left: auto;
-  display: flex;
-}
-
-.container header .container-buttons .button-logoff {
-  background: transparent;
-}
-
-.container header .container-buttons .button-logoff mat-icon {
-  color: #474747;
-}
-
-.container header .container-buttons .button-little {
-  height: 60px;
-  width: 60px;
-  border-radius: 8px;
-  border: 1px solid #DCDCE6;
-  margin-left: 16px;
-  transition: border-color 0.2s;
-  margin: 0px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.container header .container-buttons .button-icon-menu {
-  margin-right: 15px;
-}
-
-.container header .container-buttons .button-new-delivery {
-  width: 200px;
-  margin: 0 15px;
-}
-
 .container header button:hover {
   border-color: #999;
 }
@@ -75,4 +40,10 @@
 
 .painel-entregas {
   margin-top: 100px;
+}
+
+app-menu {
+  display: flex;
+  position: relative;
+  margin-left: auto;
 }
