@@ -120,3 +120,17 @@ button:disabled {
   width: 200px;
   height: 200px;
 }
+
+.expanssion-panel-delivery {
+  .mat-expansion-panel-body {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgba(0, 0, 0, .12);
+    padding: 0 !important;
+  }
+}
+
+.mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}

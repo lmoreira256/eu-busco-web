@@ -16,52 +16,14 @@ ul {
   list-style: none;
 }
 
-ul li {
-  background: #FFF;
-  padding: 24px;
-  border-radius: 8px;
-  position: relative;
-}
-
-ul li button {
+.button-expand {
   position: absolute;
-  right: 24px;
-  top: 24px;
-  border: 0;
-  background: transparent;
-  transition: opacity 0.2s;
+  top: 5px;
+  right: 5px;
 }
 
-ul li button:hover {
-  opacity: 0.8;
-}
-
-ul li strong {
-  display: block;
-  margin-bottom: 16px;
-  color: #41414D;
-}
-
-ul li p+strong {
-  margin-top: 32px;
-}
-
-ul li p {
-  color: #737380;
-  line-height: 21px;
-  font-size: 16px;
-}
-
-ul li button mat-icon {
-  color: #474747;
-}
-
-ul li div button .icon-create {
-  margin-right: 10px;
-}
-
-ul li div {
-  position: absolute;
-  right: 24px;
-  top: 24px;
+.action-buttons {
+  button {
+    margin: 0 5px;
+  }
 }

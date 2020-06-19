@@ -8,26 +8,55 @@
     </mat-expansion-panel-header>
 
     <ul>
-      <li *ngFor="let entrega of entregas.lista">
-        <strong>TÍTULO:</strong>
-        <p>{{ entrega.titulo }}</p>
+      <mat-card *ngFor="let entrega of entregas.lista">
 
-        <strong>DESCRIÇÃO:</strong>
-        <p>{{ entrega.descricao }}</p>
+        <mat-card-title>
+          {{ entrega.titulo }}
+        </mat-card-title>
 
-        <strong>VOLUME:</strong>
-        <p>{{ entrega.volume }}</p>
+        <mat-card-subtitle>
+          {{ entrega.cidadeColeta === entrega.cidadeEntrega ? entrega.cidadeColeta : entrega.cidadeColeta + ' para ' + entrega.cidadeEntrega }}
+          <br>
+          {{ entrega.nomeCliente }}
+        </mat-card-subtitle>
 
-        <div>
-          <button type="button">
-            <mat-icon class="icon-create" aria-hidden="false" aria-label="Button delete delivery">create</mat-icon>
-          </button>
+        <button mat-icon-button color="primary" class="button-expand" (click)="expand(entrega)">
+          <mat-icon>{{ entregasExpandidas.includes(entrega.codigo) ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+          </mat-icon>
+        </button>
 
-          <button type="button">
-            <mat-icon aria-hidden="false" aria-label="Button delete delivery">delete</mat-icon>
-          </button>
-        </div>
-      </li>
+        <mat-accordion>
+
+          <mat-expansion-panel class="expanssion-panel-delivery"
+            [expanded]="entregasExpandidas.includes(entrega.codigo)">
+
+            <br>
+            <p>Data de Coleta: {{ entrega.dataColeta }}</p>
+            <p>Data de Entrega: {{ entrega.dataEntrega }}</p>
+            <p>Volume: {{ entrega.volume }}</p>
+            <p>Descrição: {{ entrega.descricao }}</p>
+
+            <mat-action-row class="action-buttons">
+
+              <button *ngIf="usuarioService.tipoUsuario != 2 && entrega.nomeEntregador == '-'" type="button"
+                (click)="pegarEntrega()" class="btn btn-success float-right">Pegar</button>
+
+              <button *ngIf="usuarioService.tipoUsuario === 1  && entrega.nomeEntregador != '-'" type="button"
+                (click)="largarEntrega()" class="btn btn-warning float-right">Largar</button>
+
+              <button *ngIf="usuarioService.tipoUsuario != 3" type="button" (click)="excluirEntrega()"
+                class="btn btn-danger float-right">Excluir</button>
+
+              <button *ngIf="usuarioService.tipoUsuario != 2" type="button" (click)="finalizarEntrega()"
+                class="btn btn-primary float-right">Finalizar</button>
+
+            </mat-action-row>
+
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+      </mat-card>
     </ul>
 
     <button *ngIf="entregas.lista.length < entregas.total" type="button" class="button" (click)="verMais()">Ver
