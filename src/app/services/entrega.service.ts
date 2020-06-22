@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from './usuario.service';
 import { UtilService } from './util.service';
+import { PaginacaoDTO } from '../interfaces/paginacao-dto';
 import { MensagensService } from './mensagens.service';
 
 @Injectable({
@@ -9,7 +10,14 @@ import { MensagensService } from './mensagens.service';
 })
 export class EntregaService {
 
-  public entregasAbertas = [];
+  abertas: PaginacaoDTO;
+  andamento: PaginacaoDTO;
+  finalizadas: PaginacaoDTO;
+  excluidas: PaginacaoDTO;
+
+  entregasAvaliacao: any;
+
+  paginaEntregasAbertas = 1;
 
   constructor(
     private http: HttpClient,
@@ -18,62 +26,74 @@ export class EntregaService {
     private mensagem: MensagensService
   ) { }
 
-  public salvar(parametros: any) {
+  salvar(parametros: any) {
     return this.http.post('entregaService/salvar', parametros).toPromise();
   }
 
-  public buscarAbertasCliente() {
-    this.http.get('entregaService/buscarAbertasCliente?idUsuario=' + this.usuarioService.idUsuario).toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
-  }
-
-  public buscarAbertasEntregador() {
-    this.http.get('entregaService/buscarAbertasEntregador?idUsuario=' + this.usuarioService.idUsuario).toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
-  }
-
-  public buscarDisponiveis() {
-    this.http.get('entregaService/buscarDisponiveis').toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
-    }).finally(() => this.util.requestProgress = false);
-  }
-
-  public pegarEntrega(parametros: any) {
+  pegarEntrega(parametros: any) {
     return this.http.post('entregaService/pegarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
-  public largarEntrega(parametros: any) {
+  largarEntrega(parametros: any) {
     return this.http.post('entregaService/largarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
-  public excluirEntrega(parametros: any) {
+  excluirEntrega(parametros: any) {
     return this.http.post('entregaService/excluirEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
-  public buscarTodasAbertas() {
-    this.http.get('entregaService/buscarTodasAbertas').toPromise().then((retorno: any) => {
-      this.entregasAbertas = retorno;
-    }).catch(() => {
-      this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
+  finalizarEntrega(codigoEntrega: number) {
+    return this.http.post('entregaService/finalizarEntrega', codigoEntrega).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  buscarEntregasAbertas(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasAbertas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  buscarEntregasAndamento(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasAndamento' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  buscarEntregasFinalizadas(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasFinalizadas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  buscarEntregasExcluidas(pagina: number) {
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario
+      + '&tipoUsuario=' + this.usuarioService.tipoUsuario
+      + '&pagina=' + pagina;
+
+    return this.http.get('entregaService/buscarEntregasExcluidas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  getAllDeliveryes() {
+    const me = this;
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario;
+
+    this.http.get('entregaService/buscarEntregas' + parametros).toPromise().then((retorno: any) => {
+      me.abertas = retorno.abertas;
+      me.andamento = retorno.andamento;
+      me.finalizadas = retorno.finalizadas;
+      me.excluidas = retorno.excluidas;
     }).finally(() => this.util.requestProgress = false);
   }
 
-  public finalizarEntrega(parametros: any) {
-    return this.http.post('entregaService/finalizarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
-  }
-
   public buscarEntregasAvaliacao() {
-    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.idUsuario)
+    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.codigoUsuario)
       .toPromise().then((retorno: any) => {
-        this.entregasAbertas = retorno;
+        this.entregasAvaliacao = retorno;
       }).catch(() => {
         this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
       }).finally(() => this.util.requestProgress = false);

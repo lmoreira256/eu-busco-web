@@ -7,25 +7,17 @@ import { HttpClient } from '@angular/common/http';
 export class UsuarioService {
 
   public usuarioLogado = false;
-  public idUsuario: number;
+  public codigoUsuario: number;
   public tipoUsuario: number;
   public nomeUsuario: string;
-  public dadosUsuario = {
-    nota: '-',
-    entregasAbertas: '-',
-    totalEntregas: '-'
-  };
+  public nota: number;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public realizarLogin(parametros: any) {
-    return this.http.post('userService/login', parametros).toPromise();
-  }
-
-  public buscarDadosUsuario() {
-    return this.http.get('userService/buscarDadosUsuario?idUsuario=' + this.idUsuario).toPromise();
+  public efetuarLogin(parametros: any) {
+    return this.http.post('usuarioService/efetuarLogin', parametros).toPromise();
   }
 
   public salvar(parametros: any) {

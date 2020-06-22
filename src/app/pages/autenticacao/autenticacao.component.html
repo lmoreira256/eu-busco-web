@@ -1,0 +1,23 @@
+<div class="container">
+
+  <section class="form">
+
+    <img class="logo-imagem" src="../../assets/images/logo_imagem.png" alt="Eu Busco" />
+
+    <form class="form" [formGroup]="userForm" (ngSubmit)="login()">
+
+      <h1>Faça seu login</h1>
+
+      <input type="text" formControlName="username" (keydown)="onKeydown($event)" placeholder="Usuário">
+
+      <input type="password" formControlName="password" (keydown)="onKeydown($event)" placeholder="Senha">
+
+      <button type="submit" class="button" [disabled]="!userForm.valid">Entrar</button>
+
+    </form>
+
+  </section>
+
+  <img class="image-presentation" src="../../assets/images/presentation_image.png" alt="Eu Busco" />
+
+</div>
