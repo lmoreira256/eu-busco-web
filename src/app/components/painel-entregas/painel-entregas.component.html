@@ -40,18 +40,20 @@
             <mat-action-row class="action-buttons">
 
               <button
-                *ngIf="usuarioService.tipoUsuario != 2 && entrega.nomeEntregador == '-' && util.isNullOrEmpty(entrega.dataExclusao)"
+                *ngIf="usuarioService.tipoUsuario != 2 && entrega.nomeEntregador == '-' && util.isNullOrEmpty(entrega.dataExclusao) && !entrega.finalizada"
                 type="button" (click)="pegarEntrega(entrega)" class="btn btn-success float-right">Pegar</button>
 
               <button
-                *ngIf="usuarioService.tipoUsuario === 1  && entrega.nomeEntregador != '-' && util.isNullOrEmpty(entrega.dataExclusao) && entrega.nomeEntregador != '-'"
+                *ngIf="usuarioService.tipoUsuario === 1  && entrega.nomeEntregador != '-' && util.isNullOrEmpty(entrega.dataExclusao) && entrega.nomeEntregador != '-'  && !entrega.finalizada"
                 type="button" (click)="largarEntrega(entrega)" class="btn btn-warning float-right">Largar</button>
 
-              <button *ngIf="usuarioService.tipoUsuario != 3 && util.isNullOrEmpty(entrega.dataExclusao)" type="button"
-                (click)="excluirEntrega(entrega)" class="btn btn-danger float-right">Excluir</button>
+              <button
+                *ngIf="usuarioService.tipoUsuario != 3 && util.isNullOrEmpty(entrega.dataExclusao)  && !entrega.finalizada"
+                type="button" (click)="excluirEntrega(entrega)" class="btn btn-danger float-right">Excluir</button>
 
-              <button *ngIf="usuarioService.tipoUsuario != 2 && util.isNullOrEmpty(entrega.dataExclusao)" type="button"
-                (click)="finalizarEntrega(entrega)" class="btn btn-primary float-right">Finalizar</button>
+              <button
+                *ngIf="usuarioService.tipoUsuario != 2 && util.isNullOrEmpty(entrega.dataExclusao)  && !entrega.finalizada && entrega.nomeEntregador != '-'"
+                type="button" (click)="finalizarEntrega(entrega)" class="btn btn-primary float-right">Finalizar</button>
 
             </mat-action-row>
 

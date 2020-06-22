@@ -76,6 +76,7 @@ export class CadastroEntregaComponent implements OnInit {
       if (retorno) {
         me.util.showAlertSuccess(me.mensagem.SALVO_SUCESSO);
         me.limparCampos();
+        me.entregaService.getAllDeliveryes();
         me.router.navigate([me.pages.DASHBOARD]);
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_SALVAR_ENDERECO);

@@ -7,35 +7,29 @@
 
 <mat-menu #menu="matMenu">
   <span *ngIf="usuarioService.tipoUsuario !== 3">
-    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENTREGA)">Cadastro de
-      Entrega</button>
-    <mat-divider></mat-divider>
-  </span>
-
-  <span *ngIf="usuarioService.tipoUsuario !== 3">
-    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_ENDERECO)">Cadastro
+    <button class="button button-menu" (click)="util.openProgram(pages.CADASTRO_ENDERECO)">Cadastro
       de Endereço</button>
     <mat-divider></mat-divider>
   </span>
 
   <span *ngIf="usuarioService.tipoUsuario === 1">
-    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_USUARIO)">Cadastro
+    <button class="button button-menu" (click)="util.openProgram(pages.CADASTRO_USUARIO)">Cadastro
       de Usuário</button>
     <mat-divider></mat-divider>
   </span>
 
   <span *ngIf="usuarioService.tipoUsuario === 1">
-    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CIDADE)">Cadastro de Cidade</button>
+    <button class="button button-menu" (click)="util.openProgram(pages.CADASTRO_CIDADE)">Cadastro de Cidade</button>
     <mat-divider></mat-divider>
   </span>
 
   <span *ngIf="usuarioService.tipoUsuario === 1">
-    <button class="button button-menu" (click)="openProgram(pages.CADASTRO_CONTATO)">Cadastro
+    <button class="button button-menu" (click)="util.openProgram(pages.CADASTRO_CONTATO)">Cadastro
       de Contatos</button>
     <mat-divider></mat-divider>
   </span>
 
-  <button class="button button-menu" (click)="openProgram(pages.CADASTRO_AVALIACAO)">Cadastro
+  <button class="button button-menu" (click)="util.openProgram(pages.CADASTRO_AVALIACAO)">Cadastro
     de Avaliação</button>
 </mat-menu>
 
