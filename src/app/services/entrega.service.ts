@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from './usuario.service';
 import { UtilService } from './util.service';
 import { PaginacaoDTO } from '../interfaces/paginacao-dto';
+import { MensagensService } from './mensagens.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,15 @@ export class EntregaService {
   finalizadas: PaginacaoDTO;
   excluidas: PaginacaoDTO;
 
+  entregasAvaliacao: any;
+
   paginaEntregasAbertas = 1;
 
   constructor(
     private http: HttpClient,
     private usuarioService: UsuarioService,
-    private util: UtilService
+    private util: UtilService,
+    private mensagem: MensagensService
   ) { }
 
   salvar(parametros: any) {
@@ -83,9 +87,16 @@ export class EntregaService {
       me.andamento = retorno.andamento;
       me.finalizadas = retorno.finalizadas;
       me.excluidas = retorno.excluidas;
-    }).catch(() => {
-      debugger
     }).finally(() => this.util.requestProgress = false);
+  }
+
+  public buscarEntregasAvaliacao() {
+    this.http.get('entregaService/buscarEntregasAvaliacao?codigoUsuario=' + this.usuarioService.codigoUsuario)
+      .toPromise().then((retorno: any) => {
+        this.entregasAvaliacao = retorno;
+      }).catch(() => {
+        this.util.showAlertDanger(this.mensagem.FALHA_ENTREGA);
+      }).finally(() => this.util.requestProgress = false);
   }
 
 }
