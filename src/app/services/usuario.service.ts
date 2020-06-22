@@ -21,11 +21,11 @@ export class UsuarioService {
   }
 
   public salvar(parametros: any) {
-    return this.http.post('usuarioService/novoUsuario', parametros).toPromise();
+    return this.http.post('userService/novoUsuario', parametros).toPromise();
   }
 
   public buscarTodosUsuarios() {
-    return this.http.get('usuarioService/buscarTodosUsuarios').toPromise();
+    return this.http.get('userService/buscarTodosUsuarios').toPromise();
   }
 
 }
