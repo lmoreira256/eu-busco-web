@@ -1,0 +1,49 @@
+.container {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
+}
+
+.container header {
+  display: flex;
+  align-items: center;
+  height: 70px;
+}
+
+.container header span {
+  font-size: 20px;
+  margin-left: 24px;
+}
+
+.container header a {
+  width: 260px;
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.container header button:hover {
+  border-color: #999;
+}
+
+.button-menu {
+  margin: 0;
+  background: transparent;
+  color: #474747;
+  border-radius: 0;
+  width: 240px;
+}
+
+.button-menu:hover {
+  background: #e6e6e6;
+}
+
+.painel-entregas {
+  margin-top: 40px;
+}
+
+app-menu {
+  display: flex;
+  position: relative;
+  margin-left: auto;
+}

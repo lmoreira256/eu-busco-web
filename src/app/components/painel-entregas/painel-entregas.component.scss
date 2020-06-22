@@ -1,0 +1,29 @@
+h1 {
+  font-size: 25px;
+  margin: 0;
+}
+
+mat-accordion mat-expansion-panel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+  list-style: none;
+}
+
+.button-expand {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.action-buttons {
+  button {
+    margin: 0 5px;
+  }
+}

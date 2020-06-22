@@ -1,0 +1,35 @@
+.button-logoff {
+  background: transparent;
+}
+
+.button-logoff mat-icon {
+  color: #474747;
+}
+
+.button-little {
+  height: 60px;
+  width: 60px;
+  border-radius: 8px;
+  border: 1px solid #DCDCE6;
+  margin-left: 16px;
+  transition: border-color 0.2s;
+  margin: 0px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.button-icon-menu {
+  margin-right: 15px;
+}
+
+.button-new-delivery {
+  width: 200px;
+  margin: 0 15px;
+}
+
+.button-menu {
+  margin: 0;
+  border-radius: 0;
+  width: 240px;
+}

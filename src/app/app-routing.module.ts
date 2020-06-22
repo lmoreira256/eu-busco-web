@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AutenticacaoComponent } from './autenticacao/autenticacao.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CadastroEntregaComponent } from './cadastro-entrega/cadastro-entrega.component';
-import { CadastroEnderecoComponent } from './cadastro-endereco/cadastro-endereco.component';
-import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
-import { CadastroCidadeComponent } from './cadastro-cidade/cadastro-cidade.component';
-import { EntregasComponent } from './entregas/entregas.component';
-import { CadastroContatoComponent } from './cadastro-contato/cadastro-contato.component';
-import { CadastroAvaliacaoComponent } from './cadastro-avaliacao/cadastro-avaliacao.component';
+import { AutenticacaoComponent } from './pages/autenticacao/autenticacao.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CadastroEntregaComponent } from './pages/cadastro-entrega/cadastro-entrega.component';
+import { CadastroEnderecoComponent } from './pages/cadastro-endereco/cadastro-endereco.component';
+import { CadastroUsuarioComponent } from './pages/cadastro-usuario/cadastro-usuario.component';
+import { CadastroCidadeComponent } from './pages/cadastro-cidade/cadastro-cidade.component';
+import { CadastroContatoComponent } from './pages/cadastro-contato/cadastro-contato.component';
+import { CadastroAvaliacaoComponent } from './pages/cadastro-avaliacao/cadastro-avaliacao.component';
 
 const routes: Routes = [
   { path: '', component: AutenticacaoComponent },
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'cadastro-endereco', component: CadastroEnderecoComponent },
   { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
   { path: 'cadastro-cidade', component: CadastroCidadeComponent },
-  { path: 'entregas', component: EntregasComponent },
   { path: 'cadastro-contato', component: CadastroContatoComponent },
   { path: 'cadastro-avaliacao', component: CadastroAvaliacaoComponent }
 ];
