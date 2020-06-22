@@ -3,8 +3,6 @@ import { EntregaService } from 'src/app/services/entrega.service';
 import { PaginacaoDTO } from 'src/app/interfaces/paginacao-dto';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { UtilService } from 'src/app/services/util.service';
-import { PagesService } from 'src/app/services/pages.service';
-import { Router } from '@angular/router';
 import { MensagensService } from 'src/app/services/mensagens.service';
 
 @Component({
@@ -23,9 +21,7 @@ export class PainelEntregasComponent implements OnInit {
   constructor(
     public entregaService: EntregaService,
     public usuarioService: UsuarioService,
-    private util: UtilService,
-    private pages: PagesService,
-    private router: Router,
+    public util: UtilService,
     private mensagem: MensagensService
   ) { }
 
@@ -45,17 +41,18 @@ export class PainelEntregasComponent implements OnInit {
     }
   }
 
-  public pegarEntrega(entrega: any) {
+  pegarEntrega(entrega: any) {
     const me = this;
 
     const parametros = {
-      codigoEntrega: entrega.codigoEntrega,
+      codigoEntrega: entrega.codigo,
       codigoEntregador: me.usuarioService.codigoUsuario
     };
 
     me.entregaService.pegarEntrega(parametros).then((retorno: any) => {
       if (retorno) {
-        me.router.navigate([me.pages.DASHBOARD]);
+        me.entregaService.getAllDeliveryes();
+        me.entregasExpandidas = [];
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_PEGAR_ENTREGA);
       }
@@ -64,7 +61,7 @@ export class PainelEntregasComponent implements OnInit {
     });
   }
 
-  public largarEntrega(entrega: any) {
+  largarEntrega(entrega: any) {
     const me = this;
 
     me.entregaService.largarEntrega(entrega.codigoEntrega).then((retorno: any) => {
@@ -76,10 +73,12 @@ export class PainelEntregasComponent implements OnInit {
     });
   }
 
-  public excluirEntrega(entrega: any) {
+  excluirEntrega(entrega: any) {
     const me = this;
 
-    me.entregaService.excluirEntrega(entrega.codigoEntrega).then((retorno: any) => {
+    me.entregaService.excluirEntrega(entrega.codigo).then((retorno: any) => {
+      me.entregaService.getAllDeliveryes();
+
       if (!retorno) {
         me.util.showAlertDanger(me.mensagem.FALHA_EXCLUIR_ENTREGA);
       }
@@ -88,17 +87,12 @@ export class PainelEntregasComponent implements OnInit {
     });
   }
 
-  public finalizarEntrega(entrega: any) {
+  finalizarEntrega(entrega: any) {
     const me = this;
 
-    me.entregaService.finalizarEntrega(entrega.codigoEntrega).then((retorno: any) => {
+    me.entregaService.finalizarEntrega(entrega.codigo).then((retorno: any) => {
       if (retorno) {
-        // me.usuarioService.buscarDadosUsuario().then((ret: any) => {
-        //   me.usuarioService.dadosUsuario = ret;
-        // }).catch(() => {
-        //   me.util.showAlertDanger(me.mensagem.FALHA_DADOS_USUARIO);
-        // }).finally(() => me.util.requestProgress = false);
-
+        me.entregaService.getAllDeliveryes();
       } else {
         me.util.showAlertDanger(me.mensagem.FALHA_FINALIZAR_ENTREGA);
       }
@@ -106,6 +100,5 @@ export class PainelEntregasComponent implements OnInit {
       me.util.showAlertDanger(me.mensagem.FALHA_FINALIZAR_ENTREGA);
     });
   }
-
 
 }

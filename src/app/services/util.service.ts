@@ -55,7 +55,7 @@ export class UtilService {
     }
   }
 
-  public isNullOrEmpy(obj: any) {
+  public isNullOrEmpty(obj: any) {
     return obj === null || obj === undefined;
   }
 

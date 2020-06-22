@@ -38,8 +38,8 @@ export class EntregaService {
     return this.http.post('entregaService/excluirEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
   }
 
-  finalizarEntrega(parametros: any) {
-    return this.http.post('entregaService/finalizarEntrega', parametros).toPromise().finally(() => this.util.requestProgress = false);
+  finalizarEntrega(codigoEntrega: number) {
+    return this.http.post('entregaService/finalizarEntrega', codigoEntrega).toPromise().finally(() => this.util.requestProgress = false);
   }
 
   buscarEntregasAbertas(pagina: number) {
@@ -72,6 +72,20 @@ export class EntregaService {
       + '&pagina=' + pagina;
 
     return this.http.get('entregaService/buscarEntregasExcluidas' + parametros).toPromise().finally(() => this.util.requestProgress = false);
+  }
+
+  getAllDeliveryes() {
+    const me = this;
+    const parametros = '?codigoUsuario=' + this.usuarioService.codigoUsuario;
+
+    this.http.get('entregaService/buscarEntregas' + parametros).toPromise().then((retorno: any) => {
+      me.abertas = retorno.abertas;
+      me.andamento = retorno.andamento;
+      me.finalizadas = retorno.finalizadas;
+      me.excluidas = retorno.excluidas;
+    }).catch(() => {
+      debugger
+    }).finally(() => this.util.requestProgress = false);
   }
 
 }

@@ -33,22 +33,25 @@
             <br>
             <p>Data de Coleta: {{ entrega.dataColeta }}</p>
             <p>Data de Entrega: {{ entrega.dataEntrega }}</p>
+            <p *ngIf="!util.isNullOrEmpty(entrega.dataExclusao)">Data de Exclusão: {{ entrega.dataExclusao }}</p>
             <p>Volume: {{ entrega.volume }}</p>
             <p>Descrição: {{ entrega.descricao }}</p>
 
             <mat-action-row class="action-buttons">
 
-              <button *ngIf="usuarioService.tipoUsuario != 2 && entrega.nomeEntregador == '-'" type="button"
-                (click)="pegarEntrega()" class="btn btn-success float-right">Pegar</button>
+              <button
+                *ngIf="usuarioService.tipoUsuario != 2 && entrega.nomeEntregador == '-' && util.isNullOrEmpty(entrega.dataExclusao)"
+                type="button" (click)="pegarEntrega(entrega)" class="btn btn-success float-right">Pegar</button>
 
-              <button *ngIf="usuarioService.tipoUsuario === 1  && entrega.nomeEntregador != '-'" type="button"
-                (click)="largarEntrega()" class="btn btn-warning float-right">Largar</button>
+              <button
+                *ngIf="usuarioService.tipoUsuario === 1  && entrega.nomeEntregador != '-' && util.isNullOrEmpty(entrega.dataExclusao) && entrega.nomeEntregador != '-'"
+                type="button" (click)="largarEntrega(entrega)" class="btn btn-warning float-right">Largar</button>
 
-              <button *ngIf="usuarioService.tipoUsuario != 3" type="button" (click)="excluirEntrega()"
-                class="btn btn-danger float-right">Excluir</button>
+              <button *ngIf="usuarioService.tipoUsuario != 3 && util.isNullOrEmpty(entrega.dataExclusao)" type="button"
+                (click)="excluirEntrega(entrega)" class="btn btn-danger float-right">Excluir</button>
 
-              <button *ngIf="usuarioService.tipoUsuario != 2" type="button" (click)="finalizarEntrega()"
-                class="btn btn-primary float-right">Finalizar</button>
+              <button *ngIf="usuarioService.tipoUsuario != 2 && util.isNullOrEmpty(entrega.dataExclusao)" type="button"
+                (click)="finalizarEntrega(entrega)" class="btn btn-primary float-right">Finalizar</button>
 
             </mat-action-row>
 
