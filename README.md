@@ -15,7 +15,12 @@ _Obs.: Pode demorar um pouco para startar o servidor após algum tempo parado_.
 
 ## Como subir o projeto
 
-_É necessário ter o projeto startado [@lmoreira256/eu-busco-server](https://github.com/lmoreira256/eu-busco-server) localmente._
+_É necessário ter o projeto startado [@lmoreira256/eu-busco-server](https://github.com/lmoreira256/eu-busco-server) localmente para conseguir utilizar todas as funcionalidades._
+
+O projeto foi desenvolvido com Angular, desta forma tendo as seguintes dependências:
+- NodeJS
+- npm
+- Angular CLI
 
 Após clonar o projeto, instalar as dependências nas pasta raiz do projeto:
 ```
