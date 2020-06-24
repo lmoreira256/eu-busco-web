@@ -37,3 +37,6 @@ Node: 14.3.0
 OS: win32 x64
 Angular: 8.2.2
 ```
+
+## Considerações finais
+O projeto está disponível para alterações, qualquer sugestão ou alteração seré muito bem-vinda.
