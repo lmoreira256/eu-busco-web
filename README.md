@@ -7,5 +7,7 @@
 
 ## Como subir o projeto
 
-_É necessário ter o servidor startado localmente, segue link do repositório:_
-[Eu Busco Server](https://github.com/lmoreira256/eu-busco-server).
+_É necessário ter o projeto startado [Eu Busco Server](https://github.com/lmoreira256/eu-busco-server) localmente._
+
+Após clonar o projeto, instalar as dependências nas pasta raiz do projeto:
+`npm install`
