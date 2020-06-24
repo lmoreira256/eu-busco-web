@@ -5,8 +5,10 @@
 
 ## Ver projeto
 
-O projeto pode ser visualizado através do [link](http://eubuscoweb.s3-website-sa-east-1.amazonaws.com) que está hospedado no Amazon S3.\n
-Usuário: admin\n
+O projeto pode ser visualizado através do [link](http://eubuscoweb.s3-website-sa-east-1.amazonaws.com) que está hospedado no Amazon S3.
+<br>
+Usuário: admin
+<br>
 Senha: 123456
 
 _Obs.: Pode demorar um pouco para startar o servidor após algum tempo parado_.
