@@ -54,4 +54,4 @@ Angular: 8.2.2
 ```
 
 ## Considerações finais
-O projeto está disponível para alterações, qualquer sugestão ou alteração seré muito bem-vinda.
+O projeto está disponível para alterações, qualquer sugestão ou alteração será muito bem-vinda.
