@@ -2,6 +2,7 @@
 
 > Tela inicial do sistema:
 ![](./github_images/login_page.png)
+[![Watch the video](https://img.youtube.com/vi/mvFdxLavo5Q/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvFdxLavo5Q)
 
 ## Ver projeto
 
