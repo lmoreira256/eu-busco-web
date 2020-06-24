@@ -5,15 +5,15 @@
 
 ## Ver projeto
 
-O projeto pode ser visualizado através do [link](http://eubuscoweb.s3-website-sa-east-1.amazonaws.com) que está hospedado no Amazon S3.
-Usuário: admin
+O projeto pode ser visualizado através do [link](http://eubuscoweb.s3-website-sa-east-1.amazonaws.com) que está hospedado no Amazon S3.\n
+Usuário: admin\n
 Senha: 123456
 
 _Obs.: Pode demorar um pouco para startar o servidor após algum tempo parado_.
 
 ## Como subir o projeto
 
-_É necessário ter o projeto startado @lmoreira256/eu-busco-server [Eu Busco Server](https://github.com/lmoreira256/eu-busco-server) localmente._
+_É necessário ter o projeto startado [@lmoreira256/eu-busco-server](https://github.com/lmoreira256/eu-busco-server) localmente._
 
 Após clonar o projeto, instalar as dependências nas pasta raiz do projeto:
 ```
