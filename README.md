@@ -1,9 +1,7 @@
 # Eu Busco Web - Sistema de gestão de entregas
 
-> Tela inicial do sistema:
-![](./github_images/login_page.png)
+> Demonstração pequena do sistema:
 ![](./github_images/eu-busco-demo.gif)
-![](./github_images/teste.gif)
 
 ## Ver projeto
 
